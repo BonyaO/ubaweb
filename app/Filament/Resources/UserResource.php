@@ -25,8 +25,8 @@ class UserResource extends Resource
         return $form
             ->schema([
                 TextInput::make("name")->required(),
-                TextInput::make("email")->email()->required()->unique(),
-                Select::make("role_id")->options(Role::latest()->get()),
+                TextInput::make("email")->email()->required()->unique(ignoreRecord: true),
+                Select::make("role_id")->options(Role::all()->pluck("name"))->label("Role"),
                 TextInput::make("password")->password()->hiddenOn("edit")->required()->rule(Password::default()),
             ]);
     }
