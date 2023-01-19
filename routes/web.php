@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::controller(PagesController::class)->group(function(){
+    Route::get('/', 'home');
+    Route::get('/blog', 'blog')->name('blog');
+    Route::get('/blog/{id}/{slug}', 'blogDetail')->name('blog.detail');
 });
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

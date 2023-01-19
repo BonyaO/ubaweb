@@ -29,4 +29,14 @@ class Post extends Model
     {
         return $this->morphToMany(Tag::class, "taggable");
     }
+
+    public function url()
+    {
+        return "/blog/{$this->id}/{$this->slug}";
+    }
+
+    public function tagString()
+    {
+        return $this->tags()->pluck('name')->implode(', ');
+    }
 }

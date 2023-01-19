@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PressReleaseResource\Pages;
-use App\Filament\Resources\PressReleaseResource\RelationManagers;
 use App\Models\PressRelease;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -12,8 +11,6 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PressReleaseResource extends Resource
 {
