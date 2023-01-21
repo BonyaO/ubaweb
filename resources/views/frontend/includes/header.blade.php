@@ -12,40 +12,30 @@
                     <div class="main-menu menu-style2">
                         <nav>
                             <ul id="m_menu_active">
-                                <li class="active"><a href="javascript:void(0);">Home</a>
-                                    <ul class="submenu">
-                                        <li class="active"><a href="index.html">Home One</a></li>
-                                        <li><a href="index2.html">Home Two</a></li>
-                                        <li><a href="index3.html">Home Three</a></li>
+                                <li><a href="{{route('home')}}">{{__("Home")}}</a></li>
+                                <li><a href="{{route('about')}}">{{__("About")}}</a></li>
+                                <li><a href="javascript:void(0);">{{__("Schools & Faculties")}}</a>
+                                    <ul class="submenu" style="height: 500px; overflow-y: scroll; width: 300px">
+                                        @foreach($schools as $school)
+                                            <li><a href="{{$school->url()}}">{{$school->name}}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="javascript:void(0);">Courses</a>
+                                <li><a href="javascript:void(0);">{{__("Research")}}</a>
                                     <ul class="submenu">
-                                        <li><a href="courses.html">courses</a></li>
-                                        <li><a href="course-details.html">course details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="javascript:void(0);">teacher</a>
-                                    <ul class="submenu">
-                                        <li><a href="teachers.html">teachers</a></li>
-                                        <li><a href="teacher-details.html">teacher details</a></li>
+                                        <li><a href="#">{{__("Research profiles")}}</a></li>
+                                        <li><a href="#">{{__("UBa ETD")}}</a></li>
                                     </ul>
                                 </li>
                                 <li class="middle-logo">
-                                    <a href="index.html">
+                                    <a href="{{route('home')}}">
                                         <img src="{{asset('frontend/images/icon/logo-middle.png')}}" alt="logo">
                                         <img class="hb-bottom-shape" src="{{asset('frontend/images/icon/hb-bottom-shape.png')}}" alt="logo">
                                     </a>
                                 </li>
-                                <li><a href="#">Events</a></li>
-                                <li><a href="javascript:void(0);">blog</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{route('events')}}">Events</a></li>
+                                <li><a href="{{route('blog')}}">{{_("Blog")}}</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -53,61 +43,15 @@
                 <div class="col-lg-2 col-sm-5">
                     <div class="header-bottom-right-style-2">
                         <ul>
-                            <li><a data-toggle="modal" data-target="#exampleModal" class="btn btn-light btn-round" href="#">Log in</a></li>
-                            <li><a data-toggle="modal" data-target="#exampleModal2"  class="btn btn-primary btn-round" class="active" href="#">Sign Up</a></li>
+                        @if(auth()->id())
+                            <li><a class="btn btn-light btn-round" href="/admin"><i class="fa fa-login"></i>{{__("Dashboard")}}</a></li>
+                        @else
+                            <li><a class="btn btn-light btn-round" href="/admin/login"><i class="fa fa-login"></i>{{__("Admin login")}}</a></li>
+                        @endif
                         </ul>
                     </div>
                     <!-- Button trigger modal -->  
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content p-5">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Login Here</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form> 
-                                <input type="email" placeholder="Enter Your Email.." required="">
-                                <input type="password" placeholder="Enter Your Paddword">
-                                <label class="checkbox-inline mr-5"><input type="checkbox" value="">Remember Me</label> 
-                                <a class="primary-color" href="#"><u>Forgot password</u></a>
-                                <input class="btn btn-primary btn-sm" type="submit" value="Login">
-                            </form> 
-                          </div> 
-                        </div>
-                      </div>
-                    </div> 
 
-                    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content p-5">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Please Sign Up Here</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body"> 
-                            <form class="signup-form text-center">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="First Name">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Last Name">
-                                    </div>
-                                </div>
-                                <input type="email" placeholder="Enter Your Email.." required="">
-                                <input type="password" placeholder="Enter Your Password">
-                                <label class="checkbox-inline"><input type="checkbox" value="">I Agree</label> 
-                                <input class="btn btn-primary btn-sm" type="submit" value="Register Now">
-                            </form> 
-                          </div> 
-                        </div>
-                      </div>
-                    </div>
                 </div><!-- col-lg-2 -->
                 <div class="col-12 d-block d-lg-none">
                     <div id="mobile_menu"></div>

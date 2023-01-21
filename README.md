@@ -21,3 +21,14 @@ Laravel filament dashboard template application for all dashboard management.
 -   [ ] Import files into tables [Filament import](https://filamentphp.com/plugins/import)
 -   [ ] Editor Js integration [Filament editor Js](https://filamentphp.com/plugins/editorjs)
 -   [ ] Excel export integration [Filament export](https://filamentphp.com/plugins/pxlrbt-excel)
+
+### Navigation structure
+
+-   Admission (Static pages)
+    -   Admission guide
+    -   Check admission list
+    -   Apply for admission
+-   Add webmail link to footer
+-   Research
+    -   Research profiles
+    -
