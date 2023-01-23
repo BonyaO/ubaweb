@@ -12,4 +12,9 @@ class Partner extends Model
     protected $fillable = ["name", "logo", "address", "email", "telephone", "about"];
 
     protected $casts = [ 'image' => 'array' ];
+    
+    public function logoUrl() 
+    {
+        return '/storage/' . $this->logo;
+    }
 }

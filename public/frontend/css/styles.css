@@ -1,8 +1,10 @@
+
+
 /*-----------------------------------------------------------------------------------
-Theme Name: Edification
-Author: Jsoft
+Theme Name: University of Bamenda
+Author: UBa
 Version: 1.0
-Description: Responsive Education HTML5 Template
+Description: UBa website theme
 -----------------------------------------------------------------------------------
  CSS INDEX===================
     ##== Default Css
@@ -34,6 +36,9 @@ Description: Responsive Education HTML5 Template
 /*============================================
     ##== Default Css
 *=============================================*/
+:root {
+    --primary-color: #3ea7d5;
+}
 
 body {
   font-family: "Muli", sans-serif;
@@ -117,20 +122,20 @@ a {
 }
 a:focus,
 a:hover {
-  color: #fc9928 !important;
+  color: #3ea7d5 !important;
 }
 *::-moz-selection {
-  background: #fc9928;
+  background: #3ea7d5;
   color: #fff;
   text-shadow: none;
 }
 ::-moz-selection {
-  background: #fc9928;
+  background: #3ea7d5;
   color: #fff;
   text-shadow: none;
 }
 ::selection {
-  background: #fc9928;
+  background: #c9928;
   color: #fff;
   text-shadow: none;
 }
@@ -152,15 +157,15 @@ a:hover {
   padding: 12px 20px;
 }
 .btn-primary {
-  background: #fc9928 !important;
+  background: #3ea7d5 !important;
   color: #ffffff;
-  border: 1px solid #fc9928 !important;
+  border: 1px solid #3ea7d5 !important;
 }
 .btn-primary:focus,
 .btn-primary:hover {
   background-color: #ffffff !important;
-  color: #fc9928 !important;
-  border-color: #fc9928 !important;
+  color: #3ea7d5 !important;
+  border-color: #3ea7d5 !important;
 }
 .btn-light {
   background-color: #ffffff !important;
@@ -169,15 +174,15 @@ a:hover {
 }
 .btn-light:focus,
 .btn-light:hover {
-  background-color: #fc9928 !important;
+  background-color: #3ea7d5 !important;
   color: #ffffff !important;
-  border-color: #fc9928 !important;
+  border-color: #3ea7d5 !important;
 }
 .btn-round {
   border-radius: 50px;
 }
 .primary-bg {
-  background-color: #fc9928;
+  background-color: #3ea7d5;
 }
 
 /*============================================
@@ -189,7 +194,7 @@ a:hover {
 }
 
 .header-top {
-  background-color: #fc9928;
+  background-color: #3ea7d5;
   padding: 10px 0;
 }
 
@@ -284,7 +289,7 @@ a:hover {
 
 .main-menu nav ul li > a:hover,
 .main-menu nav ul li.active > a {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 /*submenu*/
@@ -466,7 +471,7 @@ a:hover {
   height: 100vh;
   width: 100%;
   cursor: pointer;
-  background-color: #fc9928;
+  background-color: #3ea7d5;
   visibility: hidden;
   opacity: 0;
   -webkit-transition: all 0.3s ease 0s;
@@ -510,7 +515,7 @@ a:hover {
   content: "";
   height: 2px;
   width: 50px;
-  background: #fc9928;
+  background: #3ea7d5;
   position: absolute;
   left: 0;
   top: 12px;
@@ -526,11 +531,11 @@ a:hover {
   display: block;
 }
 .primary-color {
-  color: #fc9928 !important;
+  color: #3ea7d5 !important;
 }
 
 .text-color {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 .slider-content p {
@@ -651,7 +656,7 @@ a.expand-video {
   margin: auto;
   height: 78px;
   width: 78px;
-  background: #fc9928;
+  background: #3ea7d5;
   text-align: center;
   line-height: 78px;
   border-radius: 50%;
@@ -665,7 +670,7 @@ a.expand-video i {
 a.expand-video:focus,
 a.expand-video:hover {
   background-color: #fff;
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 /*============================================
@@ -691,14 +696,14 @@ a.expand-video:hover {
   top: 23px;
   color: #fff;
   padding: 6px 12px;
-  background: #fc9928;
+  background: #3ea7d5;
 }
 .cs-price:before {
   content: "";
   position: absolute;
   right: 0;
   top: -9px;
-  border-left: 10px solid #fc9928;
+  border-left: 10px solid #3ea7d5;
   border-top: 9px solid transparent;
 }
 .course-meta-title {
@@ -719,7 +724,7 @@ a.expand-video:hover {
   margin-bottom: 10px;
 }
 .course-meta-text h4 a:hover {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 ul.course-meta-stats {
 }
@@ -732,7 +737,7 @@ ul.course-meta-stats li:last-child {
   margin-right: 0;
 }
 ul.course-meta-stats li i {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 .course-meta-thumbnail {
   height: auto;
@@ -794,7 +799,7 @@ ul.course-meta-stats li i {
 .blog-carousel .owl-nav div:hover,
 .course-carousel .owl-nav div:hover,
 .teacher-carousel .owl-nav div:hover {
-  background: #fc9928;
+  background: #3ea7d5;
 }
 
 /*============================================
@@ -959,7 +964,7 @@ img.title-top-shape {
   margin-bottom: 0;
 }
 .media-body p i {
-  color: #fc9928;
+  color: #3ea7d5;
   margin-right: 8px;
 }
 /*============================================
@@ -1078,7 +1083,7 @@ img.tst-bg {
 }
 .address h6 {
   font-weight: 400;
-  color: #fc9928;
+  color: #3ea7d5;
   text-transform: capitalize;
   margin-bottom: 5px;
 }
@@ -1095,7 +1100,7 @@ img.tst-bg {
   margin-right: 10px;
 }
 .widget-company .social li a:hover {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 .fwidget-title {
   position: relative;
@@ -1160,7 +1165,7 @@ span.post-date i {
 .footer-link li i {
   font-size: 14px;
   margin-right: 12px;
-  color: #fc9928;
+  color: #3ea7d5;
 }
 .footer-link li {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1204,7 +1209,7 @@ span.post-date i {
   top: calc(50% - 1px);
   height: 2px;
   width: 10px;
-  background: #fc9928;
+  background: #3ea7d5;
   opacity: 0;
   transition: all 0.3s ease 0s;
 }
@@ -1247,7 +1252,7 @@ span.post-date i {
   border: 1px solid #ccc !important;
 }
 .header-bottom-right-style-2 li a.btn-light:hover {
-  border-color: #fc9928 !important;
+  border-color: #3ea7d5 !important;
 }
 
 .header-bottom-right-style-2 li a:hover,
@@ -1359,7 +1364,7 @@ span.post-date i {
 }
 
 .hero-content form strong a:hover {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 /*about-area-style2*/
@@ -1467,7 +1472,7 @@ span.post-date i {
 
 .tst-carousel .owl-dots .active,
 .commn-carousel .owl-dots .active {
-  background: #fc9928;
+  background: #3ea7d5;
 }
 
 /*============================================
@@ -1583,7 +1588,7 @@ span.post-date i {
 }
 
 .cnt-info ul.address li i {
-  color: #fc9928;
+  color: #3ea7d5;
   margin-right: 15px;
 }
 .cnt-info ul.social li a {
@@ -1593,7 +1598,7 @@ span.post-date i {
 }
 
 .cnt-info ul.social li a:hover {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 #google-map {
@@ -1639,7 +1644,7 @@ span.post-date i {
 }
 
 .crumb-content h4 span {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 .crumb-title {
@@ -1659,7 +1664,7 @@ span.post-date i {
   top: 25px;
   height: 2px;
   width: 50px;
-  background: #fc9928;
+  background: #3ea7d5;
 }
 
 .view-more {
@@ -1808,7 +1813,7 @@ span.post-date i {
 }
 
 .cs-social li a:hover {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 .cs-post-author {
@@ -1824,7 +1829,7 @@ span.post-date i {
 }
 
 .cs-post-author span {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 .cs-comments {
@@ -1887,7 +1892,7 @@ span.post-date i {
 }
 
 .post-author-info .social li a:hover {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 /*comment area*/
@@ -1994,7 +1999,7 @@ h4.comment-title {
 
 .leave-comment-area form input:focus,
 .leave-comment-area form textarea:focus {
-  border-color: #fc9928;
+  border-color: #3ea7d5;
 }
 
 .leave-comment-area form textarea {
@@ -2084,7 +2089,7 @@ h4.comment-title {
   font-family: "Rubik", sans-serif;
   color: #fff;
   font-size: 12px;
-  background: #fc9928;
+  background: #3ea7d5;
   padding: 5px 25px;
 }
 .w-cs-single {
@@ -2105,7 +2110,7 @@ h4.comment-title {
   font-weight: 700;
 }
 .w-cs-single p a:hover {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 .w-cs-single span {
   font-size: 12px;
@@ -2134,7 +2139,7 @@ h4.comment-title {
   border-radius: 33px;
   letter-spacing: 0;
   border: none;
-  background: #fc9928;
+  background: #3ea7d5;
   color: #fff;
   outline: none;
   -webkit-transition: all 0.3s ease 0s;
@@ -2193,8 +2198,8 @@ h4.comment-title {
   right: -10px;
   bottom: -10px;
   border: none;
-  border-right: 5px solid #fc9928;
-  border-bottom: 5px solid #fc9928;
+  border-right: 5px solid #3ea7d5;
+  border-bottom: 5px solid #3ea7d5;
   height: 86%;
   width: 100%;
 }
@@ -2223,7 +2228,7 @@ h4.comment-title {
 }
 
 .befr-themeoclor.teacher-area:before {
-  background: #fc9928;
+  background: #3ea7d5;
 }
 
 /*============================================
@@ -2247,7 +2252,7 @@ h4.comment-title {
   height: 50%;
   width: 100%;
   z-index: -1;
-  background: #fc9928;
+  background: #3ea7d5;
 }
 
 .contact-info .cnt-info {
@@ -2283,7 +2288,7 @@ h4.comment-title {
 .cnt-addres-single .icon {
   float: left;
   margin-right: 15px;
-  color: #fc9928;
+  color: #3ea7d5;
   font-size: 48px;
 }
 
@@ -2317,7 +2322,7 @@ h4.comment-title {
 
 .contact-form form input:focus,
 .contact-form form textarea:focus {
-  border-bottom: 1px solid #fc9928;
+  border-bottom: 1px solid #3ea7d5;
 }
 
 .contact-form form textarea {
@@ -2329,7 +2334,7 @@ h4.comment-title {
   height: 48px;
   width: 193px;
   color: #fff;
-  background: #fc9928;
+  background: #3ea7d5;
   letter-spacing: 0;
   font-weight: 700;
   text-transform: uppercase;
@@ -2370,17 +2375,17 @@ h4.comment-title {
 
 .blog-top-meta ul li span {
   letter-spacing: 0;
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 .blog-top-meta ul li i {
-  color: #fc9928;
+  color: #3ea7d5;
   margin-right: 10px;
   font-size: 18px;
 }
 
 .blog-meta i {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 /*widget-search*/
@@ -2398,7 +2403,7 @@ h4.comment-title {
 }
 
 .widget-search form button {
-  color: #fc9928;
+  color: #3ea7d5;
   position: absolute;
   right: 0;
   top: 0;
@@ -2432,7 +2437,7 @@ h4.comment-title {
 }
 
 .widget-category .list li a:hover {
-  color: #fc9928;
+  color: #3ea7d5;
 }
 
 .widget-category .list li a:before {
@@ -2467,7 +2472,7 @@ h4.comment-title {
   font-size: 48px;
   font-weight: 900;
   text-transform: uppercase;
-  color: #fc9928;
+  color: #3ea7d5;
   letter-spacing: 0;
   margin-bottom: 25px;
 }

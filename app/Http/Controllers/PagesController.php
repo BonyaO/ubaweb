@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Department;
 use App\Models\Event;
+use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Programme;
 use App\Models\School;
@@ -16,11 +17,11 @@ class PagesController extends Controller
     public function home()
     {
         return view('frontend.home')->with([
-            "posts" => Post::take(3)->get(),
+            "posts" => Post::take(6)->get(),
             "events" => Event::take(4)->get(),
-            "members" => TeamMember::take(3)->get(),
-            "programmes" => Programme::take(3)->get(),
-            "schools" => School::latest()->get()
+            "members" => TeamMember::take(6)->get(),
+            "programmes" => Programme::take(6)->get(),
+            "partners" => Partner::take(10)->get()
         ]);
     }
 
@@ -80,6 +81,6 @@ class PagesController extends Controller
     }
 
     public function contact() {
-        return view('contact');
+        return view('frontend.contact');
     }
 }
