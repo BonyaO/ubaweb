@@ -26,7 +26,9 @@ class ProgrammeResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('department_id')
-                    ->relationship('department', 'name')
+                ->relationship('department', 'name')
+                ->searchable()
+                ->preload()
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()

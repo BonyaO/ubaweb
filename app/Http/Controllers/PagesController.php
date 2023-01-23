@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Department;
 use App\Models\Event;
 use App\Models\Post;
 use App\Models\Programme;
@@ -25,13 +26,14 @@ class PagesController extends Controller
 
     public function about()
     {
-        $schools = School::all();
-        return view('frontend.events.index', compact("schools"));
+        return view('frontend.about');
     }
 
     public function blog()
     {
-        return "blog";
+        return view('frontend.blog.index')->with([
+            'posts' => Post::all()
+        ]);
     }
 
     public function blogDetail($id, $slug)
@@ -49,14 +51,13 @@ class PagesController extends Controller
     public function events()
     {
         $events = Event::latest()->get();
-        $schools = School::all();
-        return view('frontend.events.index', compact("events", "schools"));
+        return view('frontend.events.index', compact('events'));
     }
 
-    public function eventDetail(Event $event, string $slug)
+    public function eventDetail($id, $slug)
     {
-        $schools = School::all();
-        return view('frontend.events.show', compact($event, $schools));
+        $event = Event::findOrFail($id);
+        return view('frontend.events.show', compact("event"));
     }
 
     public function schoolDetail($id, string $slug)
@@ -64,6 +65,18 @@ class PagesController extends Controller
         $schools = School::latest()->get();
         $school = School::find($id);
         return view('frontend.schools.show', compact("school", "schools"));
+    }
+
+    public function departmentDetail($school, $id, $slug)
+    {
+        $department = Department::findOrFail($id);
+        return view('frontend.departments.show')->withDepartment($department); 
+    }
+
+    public function programmeDetail($school, $department, $programmeId)
+    {
+        $programme = Programme::findOrFail($programmeId);
+        return view('frontend.programmes.show')->withProgramme($programme); 
     }
 
     public function contact() {

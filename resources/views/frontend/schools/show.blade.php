@@ -7,12 +7,12 @@
             <div class="col-md-5">
             <img src="{{$school->logo ?? 'https://picsum.photos/200'}}" 
                 alt="logo" class="img-fluid img-thumbnail mb-5 ">
-                @if($school->department)
+                @if($school->departments)
                 <h5 class="mb-2">Departments</h5>
                 <ul>
                     @foreach($school->departments as $department)
                         <li>
-                            <p class="mb-0 font-weight-bold">{{$department->name}}</p>
+                            <p class="mb-0 font-weight-bold" style="text-decoration: underline"><a href="{{$department->departmentUrl()}}">{{$department->name}}</a></p>
                             <p class="small">{{$department->description}}</p>
                         </li>
                     @endforeach

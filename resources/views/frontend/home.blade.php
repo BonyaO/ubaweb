@@ -154,12 +154,12 @@
                 <div class="col-md-6">
                     <div class="media align-items-center mb-5">
                         <div class="media-head primary-bg">
-                            <span><sub>MAR</sub>25</span>
-                            <p>2018</p>
+                            <span><sub>{{$event->start_date->format('M')}}</sub>{{$event->start_date->format('d')}}</span>
+                            <p>{{$event->start_date->format('Y')}}</p>
                         </div>
                         <div class="media-body">
                             <h4><a href="#">{{$event->name}}</a></h4>
-                            <p><i class="fa fa-clock-o"></i>{{$event->start_date}} - {{$event->end_date}}</p>
+                            <p>{{Str::words($event->description, 30)}}</p>
                         </div>
                     </div> <!-- media -->
                 </div><!-- col-md-6 -->
