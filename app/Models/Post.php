@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Post extends Model
 {
@@ -25,17 +23,17 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function tags()
+    public function tags(): MorphMany
     {
         return $this->morphToMany(Tag::class, "taggable");
     }
 
-    public function url()
+    public function url(): string
     {
         return "/blog/{$this->id}/{$this->slug}";
     }
 
-    public function tagString()
+    public function tagString(): string
     {
         return $this->tags()->pluck('name')->implode(', ');
     }
