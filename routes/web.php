@@ -24,6 +24,8 @@ Route::controller(PagesController::class)->group(function(){
     Route::get('/blog', 'blog')->name('blog');
     Route::get('/blog/{id}/{slug}', 'blogDetail')->name('blog.detail');
 
+    Route::get('/press-release', 'pressRelease')->name('pressRelease');
+
     Route::get('/events', 'events')->name('events');
     Route::get('/events/{event}/{slug}', 'eventDetail')->name('events.detail');
 

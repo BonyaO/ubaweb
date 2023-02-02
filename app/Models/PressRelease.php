@@ -9,5 +9,14 @@ class PressRelease extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'signed_on', 'file', 'image', 'description'];
+    protected $fillable = ['title', 'signed_on', 'file', 'image', 'description', 'is_published'];
+
+    protected $casts = [
+        'signed_on' => 'datetime'
+    ];
+
+    public function downloadUrl(): string
+    {
+        return "/storage/" . $this->file; 
+    }
 }

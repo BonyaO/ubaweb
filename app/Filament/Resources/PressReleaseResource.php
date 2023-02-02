@@ -6,11 +6,13 @@ use App\Filament\Resources\PressReleaseResource\Pages;
 use App\Models\PressRelease;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Toggle;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\ToggleColumn;
 
 class PressReleaseResource extends Resource
 {
@@ -27,14 +29,16 @@ class PressReleaseResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                FileUpload::make('image'),
+                FileUpload::make('image')->image(),
                 Forms\Components\DatePicker::make('signed_on')
                     ->required(),
                 FileUpload::make('file')
+                    ->enableDownload()
                     ->required(),
                 Forms\Components\TextInput::make('description')
                     ->required()
                     ->maxLength(255),
+                Toggle::make('is_publshed')->label("Publish")
             ]);
     }
 
@@ -46,6 +50,7 @@ class PressReleaseResource extends Resource
                 ImageColumn::make('image')->height(60)->width(100),
                 Tables\Columns\TextColumn::make('signed_on')->date()->sortable(),
                 Tables\Columns\TextColumn::make('file'),
+                ToggleColumn::make('is_published'),
             ])->defaultSort("created_at", "desc")
             ->filters([
                 //

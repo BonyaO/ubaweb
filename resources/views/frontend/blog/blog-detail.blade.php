@@ -8,7 +8,7 @@
                 <div class="col-lg-8 col-md-8">
                     <div class="course-details">
                         <div class="cs-thumb mb-5">
-                            <img src="{{$post->image}}" alt="post image">
+                            <img src="{{$post->imageUrl()}}" alt="post image">
                         </div>
                         <div class="cs-content">
                             <div class="blog-top-meta">

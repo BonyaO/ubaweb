@@ -23,7 +23,7 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function tags(): MorphMany
+    public function tags()
     {
         return $this->morphToMany(Tag::class, "taggable");
     }

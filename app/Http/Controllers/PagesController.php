@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\Event;
 use App\Models\Partner;
 use App\Models\Post;
+use App\Models\PressRelease;
 use App\Models\Programme;
 use App\Models\School;
 use App\Models\TeamMember;
@@ -28,6 +29,13 @@ class PagesController extends Controller
     public function about()
     {
         return view('frontend.about');
+    }
+
+    public function pressRelease()
+    {
+        return view('frontend.press-release')->with([
+            'pressReleases' => PressRelease::latest()->get()
+        ]);
     }
 
     public function blog()

@@ -33,7 +33,12 @@
                                     </a>
                                 </li>
                                 <li><a href="{{route('events')}}">Events</a></li>
-                                <li><a href="{{route('blog')}}">{{_("Blog")}}</a></li>
+                                <li><a href="javascript:void(0);">{{__("News")}}</a>
+                                    <ul class="submenu">
+                                        <li><a href="{{route('blog')}}">{{_("Blog")}}</a></li>
+                                        <li><a href="{{route('pressRelease')}}">{{__("Press release")}}</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="javascript:void(0);">{{__("Admissions")}}</a>
                                     <ul class="submenu">
                                         <li><a href="https://ubastudent.online/admission" target="_blank">{{__("Apply for admissions")}}</a></li>

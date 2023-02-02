@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('signed_on');
             $table->string('file');
             $table->string('description');
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
         });
     }
