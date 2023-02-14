@@ -160,9 +160,9 @@
                 @foreach($partners as $partner)
                     <div class="col-lg-3 text-center">
                         <div class="tst-carousel owl-carousel">
-                            <div class="testimonial-content pb--40">
+                            <div class="testimonial-content pb--40 items-center">
                                 <a href="{{$partner->address}}" target="_blank" class="section-title sec-style-two">
-                                    <img src="{{$partner->logoUrl()}}" alt="partner logo" style="max-width: 100%; height: 60px;">
+                                    <img src="{{$partner->logoUrl()}}" alt="partner logo" style="width: 60px ; height: 60px;">
                                     <span class="text-uppercase primary-color mb-0">{{$partner->name}}</span>
                                 </a>
                             </div>  

@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="icon" href="http://127.0.0.1:8000/favicon.ico">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
