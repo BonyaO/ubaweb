@@ -9,16 +9,17 @@
                     <div class="about-left-content">
                         <div class="section-title">
                              <span class="text-uppercase">about us</span>
-                            <h2>Welcome to</h2><h2><span>Our </span> <span class="primary-color">university</span></h2> 
+                            <h2>Welcome to</h2><h2><span>Our </span> <span class="primary-color">university</span></h2>
                         </div>
                         <p>
-The University of Bamenda (UBa) is a distinctive anglo-saxon university with future international reputation for higher standards of achievements and innovations in all areas of professionalism, arts, sciences and technology. If you are looking for a life-changing experience that will equip you with the knowledge and skills you will need to meet the future with confidence, we are sure that you will find it in UBa. As a graduate or postgraduate student in UBa, you will study in modern surroundings that boast exceptionally well-equipped studios, workshops and facilities. 
+The University of Bamenda (UBa) is a distinctive anglo-saxon university with future international reputation for higher standards of achievements and innovations in all areas of professionalism, arts, sciences and technology. If you are looking for a life-changing experience that will equip you with the knowledge and skills you will need to meet the future with confidence, we are sure that you will find it in UBa. As a graduate or postgraduate student in UBa, you will study in modern surroundings that boast exceptionally well-equipped studios, workshops and facilities.
                         </p>
                         {{-- <a href="#" class="btn btn-primary btn-round">Read more</a> --}}
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://picsum.photos/500" alt="about us">
+                    {{-- img2 --}}
+                    <img src="{{asset('frontend/images/img1.jpg')}}" alt="about us">
                 </div>
             </div>
         </div>
@@ -29,7 +30,8 @@ The University of Bamenda (UBa) is a distinctive anglo-saxon university with fut
             <div class="row">
                 <div class="col-lg-4">
                     <div class="tch-left-thumb">
-                        <img src="https://picsum.photos/500" alt="image">
+                    {{-- img1 --}}
+                    <img src="{{asset('frontend/images/img3.jpg')}}" alt="about us">
                     </div>
                 </div>
                 <div class="col-lg-8">
