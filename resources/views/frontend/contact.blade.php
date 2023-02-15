@@ -46,7 +46,7 @@
                             <input type="text" name="name" placeholder="Enter your name">
                         </div>
                         <div class="col-md-4">
-                            <div class="fx-relay-email-input-wrapper"><input type="email" name="email" placeholder="Your Email" style="padding-right: 30px;"><div class="fx-relay-icon" style="top: 0px; bottom: 20px;"><button class="fx-relay-button" id="fx-relay-button" type="button" title="Generate new mask" style="background-image: url(&quot;moz-extension://82e6bf4b-7902-4e5e-93f4-de9b2f1cfb36/images/logo-image-fx-relay.svg&quot;);"></button></div></div>
+                            <div class="fx-relay-email-input-wrapper"><input type="email" name="email" placeholder="Your Email" style="padding-right: 30px;"></div>
                         </div>
                         <div class="col-md-4">
                             <input type="text" name="subject" placeholder="Subject">
