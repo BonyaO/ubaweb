@@ -41,7 +41,7 @@ class PagesController extends Controller
     public function blog()
     {
         return view('frontend.blog.index')->with([
-            'posts' => Post::all()
+            'posts' => Post::paginate(1)
         ]);
     }
 
@@ -79,16 +79,17 @@ class PagesController extends Controller
     public function departmentDetail($school, $id, $slug)
     {
         $department = Department::findOrFail($id);
-        return view('frontend.departments.show')->withDepartment($department); 
+        return view('frontend.departments.show')->withDepartment($department);
     }
 
     public function programmeDetail($school, $department, $programmeId)
     {
         $programme = Programme::findOrFail($programmeId);
-        return view('frontend.programmes.show')->withProgramme($programme); 
+        return view('frontend.programmes.show')->withProgramme($programme);
     }
 
-    public function contact() {
+    public function contact()
+    {
         return view('frontend.contact');
     }
 }

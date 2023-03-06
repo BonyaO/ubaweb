@@ -12,6 +12,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0">

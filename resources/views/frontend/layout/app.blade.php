@@ -3,6 +3,7 @@
 
 <head>
     @include('frontend/includes/head-scripts')
+        <link rel="stylesheet" href="{{asset('frontend/css/uba.css')}}">
 </head>
 
 <body>
@@ -14,7 +15,7 @@
         <div class="loader"></div>
     </div>
     <!-- prealoader area end -->
-    
+
     <!-- header area start -->
     @include('frontend/includes/header')
     <!-- header area end -->
