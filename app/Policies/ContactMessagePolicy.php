@@ -16,7 +16,7 @@ class ContactMessagePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can('view_any_contact::message');
     }
@@ -28,7 +28,7 @@ class ContactMessagePolicy
      * @param  \App\Models\ContactMessage  $contactMessage
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, ContactMessage $contactMessage)
+    public function view(User $user, ContactMessage $contactMessage): bool
     {
         return $user->can('view_contact::message');
     }
@@ -39,7 +39,7 @@ class ContactMessagePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can('create_contact::message');
     }
@@ -51,7 +51,7 @@ class ContactMessagePolicy
      * @param  \App\Models\ContactMessage  $contactMessage
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, ContactMessage $contactMessage)
+    public function update(User $user, ContactMessage $contactMessage): bool
     {
         return $user->can('update_contact::message');
     }
@@ -63,7 +63,7 @@ class ContactMessagePolicy
      * @param  \App\Models\ContactMessage  $contactMessage
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, ContactMessage $contactMessage)
+    public function delete(User $user, ContactMessage $contactMessage): bool
     {
         return $user->can('delete_contact::message');
     }
@@ -74,7 +74,7 @@ class ContactMessagePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function deleteAny(User $user)
+    public function deleteAny(User $user): bool
     {
         return $user->can('delete_any_contact::message');
     }
@@ -86,7 +86,7 @@ class ContactMessagePolicy
      * @param  \App\Models\ContactMessage  $contactMessage
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, ContactMessage $contactMessage)
+    public function forceDelete(User $user, ContactMessage $contactMessage): bool
     {
         return $user->can('force_delete_contact::message');
     }
@@ -97,7 +97,7 @@ class ContactMessagePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDeleteAny(User $user)
+    public function forceDeleteAny(User $user): bool
     {
         return $user->can('force_delete_any_contact::message');
     }
@@ -109,7 +109,7 @@ class ContactMessagePolicy
      * @param  \App\Models\ContactMessage  $contactMessage
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, ContactMessage $contactMessage)
+    public function restore(User $user, ContactMessage $contactMessage): bool
     {
         return $user->can('restore_contact::message');
     }
@@ -120,7 +120,7 @@ class ContactMessagePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restoreAny(User $user)
+    public function restoreAny(User $user): bool
     {
         return $user->can('restore_any_contact::message');
     }
@@ -132,7 +132,7 @@ class ContactMessagePolicy
      * @param  \App\Models\ContactMessage  $contactMessage
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, ContactMessage $contactMessage)
+    public function replicate(User $user, ContactMessage $contactMessage): bool
     {
         return $user->can('replicate_contact::message');
     }
@@ -143,7 +143,7 @@ class ContactMessagePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function reorder(User $user)
+    public function reorder(User $user): bool
     {
         return $user->can('reorder_contact::message');
     }
