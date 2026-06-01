@@ -3,6 +3,30 @@
 @section('content')
     @include('frontend/includes/hero')
 
+    <div class="scholarship-call-area ptb--120">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <span class="text-uppercase">Scholarship opportunity</span>
+                        <h2>Call for TAGDev 2.0 Scholarship Applications</h2>
+                    </div>
+                    <p class="mb-4">
+                        Apply now for the 2026/2027 TAGDev 2.0 scholarship at the University of Bamenda. This opportunity supports academically competent students with financial need and encourages females, refugees, internally displaced persons, and applicants with disabilities to apply.
+                    </p>
+                    <div class="btn-wrap">
+                        <a href="{{ route('pressRelease') }}" class="btn btn-primary btn-round mr-3">Download call</a>
+                        <a href="https://ubastudent.online/admission" target="_blank" class="btn btn-light btn-round mr-3">Apply for admission</a>
+                        <a href="{{ route('contact') }}" class="btn btn-primary btn-round">Apply for scholarship</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('frontend/images/img1.jpg') }}" alt="Scholarship call" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="feature-blog  ptb--120">
         <div class="container">
             <div class="row">

@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\ServiceResource\Pages;
 
 use App\Filament\Resources\ServiceResource;
-use Filament\Pages\Actions;
+use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditService extends EditRecord
@@ -15,7 +15,7 @@ class EditService extends EditRecord
         return $this->getResource()::getUrl('index');
     }
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make(),

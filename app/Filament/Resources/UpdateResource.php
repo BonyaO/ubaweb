@@ -4,14 +4,15 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UpdateResource\Pages;
 use App\Models\Update;
-use Closure;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Resources\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
+use Filament\Actions;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Str;
 use stdClass;
@@ -20,20 +21,20 @@ class UpdateResource extends Resource
 {
     protected static ?string $model = Update::class;
 
-    protected static ?string $navigationGroup = 'cms';
+    protected static string|\UnitEnum|null $navigationGroup = 'cms';
 
     protected static ?string $recordTitleAttribute = "name";
 
-    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-information-circle';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 TextInput::make("name")
                     ->reactive()
                     ->afterStateUpdated(
-                        function (Closure $set, $state) {
+                        function (Set $set, $state) {
                             $set("slug", Str::slug($state));
                         }
                     )->required(),
@@ -54,10 +55,10 @@ class UpdateResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Actions\DeleteBulkAction::make(),
             ]);
     }
 

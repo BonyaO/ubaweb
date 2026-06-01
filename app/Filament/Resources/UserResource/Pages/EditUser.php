@@ -14,7 +14,7 @@ class EditUser extends EditRecord
 {
     protected static string $resource = UserResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Action::make("delete")->action("delete")->color("danger")->icon("heroicon-o-trash")->size("sm"),

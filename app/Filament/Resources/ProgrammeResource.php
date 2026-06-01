@@ -6,10 +6,11 @@ use App\Filament\Resources\ProgrammeResource\Pages;
 use App\Filament\Resources\ProgrammeResource\RelationManagers;
 use App\Models\Programme;
 use Filament\Forms;
-use Filament\Resources\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
+use Filament\Actions;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -17,13 +18,13 @@ class ProgrammeResource extends Resource
 {
     protected static ?string $model = Programme::class;
 
-    protected static ?string $navigationGroup = 'School management';
+    protected static string|\UnitEnum|null $navigationGroup = 'School management';
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-academic-cap';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Forms\Components\Select::make('department_id')
                 ->relationship('department', 'name')
@@ -68,10 +69,10 @@ class ProgrammeResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Actions\DeleteBulkAction::make(),
             ]);
     }
     

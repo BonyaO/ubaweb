@@ -1,6 +1,6 @@
 <?php
 
-use IbrahimBedir\FilamentDynamicSettingsPage\Models\Setting;
+use App\Models\Setting;
 
 function setting($key)
 {

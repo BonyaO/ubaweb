@@ -7,10 +7,11 @@ use App\Models\Faq;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
-use Filament\Resources\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
+use Filament\Actions;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 
@@ -18,13 +19,13 @@ class FaqResource extends Resource
 {
     protected static ?string $model = Faq::class;
 
-    protected static ?string $navigationGroup = "cms";
+    protected static string|\UnitEnum|null $navigationGroup = "cms";
 
-    protected static ?string $navigationIcon = 'heroicon-o-chat';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-chat-bubble-left';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 TextInput::make("question")->required(),
                 Toggle::make("is_visible")->label("Visibility")->default(true),
@@ -44,10 +45,10 @@ class FaqResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Actions\DeleteBulkAction::make(),
             ]);
     }
 

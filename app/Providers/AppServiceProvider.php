@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\School;
-use Filament\Facades\Filament;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,7 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Filament::registerViteTheme('resources/css/filament.css');
-        view()->share('schools', School::all());
+        if (Schema::hasTable('schools')) {
+            view()->share('schools', School::all());
+        }
     }
 }

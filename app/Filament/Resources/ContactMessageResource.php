@@ -7,22 +7,23 @@ use App\Models\ContactMessage;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Resources\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
+use Filament\Actions;
 
 class ContactMessageResource extends Resource
 {
     protected static ?string $model = ContactMessage::class;
 
-    protected static ?string $navigationGroup = "feedback";
+    protected static string|\UnitEnum|null $navigationGroup = "feedback";
 
-    protected static ?string $navigationIcon = 'heroicon-o-mail-open';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-envelope-open';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 TextInput::make('firstname')
                     ->required()
@@ -69,10 +70,10 @@ class ContactMessageResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Actions\DeleteBulkAction::make(),
             ]);
     }
 

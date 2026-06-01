@@ -1,151 +1,75 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
-use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use App\Models\PressRelease;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PressReleasePolicy
 {
     use HandlesAuthorization;
-
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function viewAny(User $user): bool
+    
+    public function viewAny(AuthUser $authUser): bool
     {
-        return $user->can('view_any_press::release');
+        return $authUser->can('ViewAny:PressRelease');
     }
 
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\PressRelease  $pressRelease
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, PressRelease $pressRelease): bool
+    public function view(AuthUser $authUser, PressRelease $pressRelease): bool
     {
-        return $user->can('view_press::release');
+        return $authUser->can('View:PressRelease');
     }
 
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function create(User $user): bool
+    public function create(AuthUser $authUser): bool
     {
-        return $user->can('create_press::release');
+        return $authUser->can('Create:PressRelease');
     }
 
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\PressRelease  $pressRelease
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function update(User $user, PressRelease $pressRelease): bool
+    public function update(AuthUser $authUser, PressRelease $pressRelease): bool
     {
-        return $user->can('update_press::release');
+        return $authUser->can('Update:PressRelease');
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\PressRelease  $pressRelease
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function delete(User $user, PressRelease $pressRelease): bool
+    public function delete(AuthUser $authUser, PressRelease $pressRelease): bool
     {
-        return $user->can('delete_press::release');
+        return $authUser->can('Delete:PressRelease');
     }
 
-    /**
-     * Determine whether the user can bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function deleteAny(User $user): bool
+    public function deleteAny(AuthUser $authUser): bool
     {
-        return $user->can('delete_any_press::release');
+        return $authUser->can('DeleteAny:PressRelease');
     }
 
-    /**
-     * Determine whether the user can permanently delete.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\PressRelease  $pressRelease
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, PressRelease $pressRelease): bool
+    public function restore(AuthUser $authUser, PressRelease $pressRelease): bool
     {
-        return $user->can('force_delete_press::release');
+        return $authUser->can('Restore:PressRelease');
     }
 
-    /**
-     * Determine whether the user can permanently bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDeleteAny(User $user): bool
+    public function forceDelete(AuthUser $authUser, PressRelease $pressRelease): bool
     {
-        return $user->can('force_delete_any_press::release');
+        return $authUser->can('ForceDelete:PressRelease');
     }
 
-    /**
-     * Determine whether the user can restore.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\PressRelease  $pressRelease
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, PressRelease $pressRelease): bool
+    public function forceDeleteAny(AuthUser $authUser): bool
     {
-        return $user->can('restore_press::release');
+        return $authUser->can('ForceDeleteAny:PressRelease');
     }
 
-    /**
-     * Determine whether the user can bulk restore.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restoreAny(User $user): bool
+    public function restoreAny(AuthUser $authUser): bool
     {
-        return $user->can('restore_any_press::release');
+        return $authUser->can('RestoreAny:PressRelease');
     }
 
-    /**
-     * Determine whether the user can replicate.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\PressRelease  $pressRelease
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function replicate(User $user, PressRelease $pressRelease): bool
+    public function replicate(AuthUser $authUser, PressRelease $pressRelease): bool
     {
-        return $user->can('replicate_press::release');
+        return $authUser->can('Replicate:PressRelease');
     }
 
-    /**
-     * Determine whether the user can reorder.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function reorder(User $user): bool
+    public function reorder(AuthUser $authUser): bool
     {
-        return $user->can('reorder_press::release');
+        return $authUser->can('Reorder:PressRelease');
     }
 
 }

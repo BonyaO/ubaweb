@@ -1,151 +1,75 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
-use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use App\Models\School;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class SchoolPolicy
 {
     use HandlesAuthorization;
-
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function viewAny(User $user): bool
+    
+    public function viewAny(AuthUser $authUser): bool
     {
-        return $user->can('view_any_school');
+        return $authUser->can('ViewAny:School');
     }
 
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\School  $school
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, School $school): bool
+    public function view(AuthUser $authUser, School $school): bool
     {
-        return $user->can('view_school');
+        return $authUser->can('View:School');
     }
 
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function create(User $user): bool
+    public function create(AuthUser $authUser): bool
     {
-        return $user->can('create_school');
+        return $authUser->can('Create:School');
     }
 
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\School  $school
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function update(User $user, School $school): bool
+    public function update(AuthUser $authUser, School $school): bool
     {
-        return $user->can('update_school');
+        return $authUser->can('Update:School');
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\School  $school
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function delete(User $user, School $school): bool
+    public function delete(AuthUser $authUser, School $school): bool
     {
-        return $user->can('delete_school');
+        return $authUser->can('Delete:School');
     }
 
-    /**
-     * Determine whether the user can bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function deleteAny(User $user): bool
+    public function deleteAny(AuthUser $authUser): bool
     {
-        return $user->can('delete_any_school');
+        return $authUser->can('DeleteAny:School');
     }
 
-    /**
-     * Determine whether the user can permanently delete.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\School  $school
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, School $school): bool
+    public function restore(AuthUser $authUser, School $school): bool
     {
-        return $user->can('force_delete_school');
+        return $authUser->can('Restore:School');
     }
 
-    /**
-     * Determine whether the user can permanently bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDeleteAny(User $user): bool
+    public function forceDelete(AuthUser $authUser, School $school): bool
     {
-        return $user->can('force_delete_any_school');
+        return $authUser->can('ForceDelete:School');
     }
 
-    /**
-     * Determine whether the user can restore.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\School  $school
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, School $school): bool
+    public function forceDeleteAny(AuthUser $authUser): bool
     {
-        return $user->can('restore_school');
+        return $authUser->can('ForceDeleteAny:School');
     }
 
-    /**
-     * Determine whether the user can bulk restore.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restoreAny(User $user): bool
+    public function restoreAny(AuthUser $authUser): bool
     {
-        return $user->can('restore_any_school');
+        return $authUser->can('RestoreAny:School');
     }
 
-    /**
-     * Determine whether the user can replicate.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\School  $school
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function replicate(User $user, School $school): bool
+    public function replicate(AuthUser $authUser, School $school): bool
     {
-        return $user->can('replicate_school');
+        return $authUser->can('Replicate:School');
     }
 
-    /**
-     * Determine whether the user can reorder.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function reorder(User $user): bool
+    public function reorder(AuthUser $authUser): bool
     {
-        return $user->can('reorder_school');
+        return $authUser->can('Reorder:School');
     }
 
 }

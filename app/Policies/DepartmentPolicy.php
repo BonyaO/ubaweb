@@ -1,151 +1,75 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
-use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use App\Models\Department;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class DepartmentPolicy
 {
     use HandlesAuthorization;
-
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function viewAny(User $user): bool
+    
+    public function viewAny(AuthUser $authUser): bool
     {
-        return $user->can('view_any_department');
+        return $authUser->can('ViewAny:Department');
     }
 
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, Department $department): bool
+    public function view(AuthUser $authUser, Department $department): bool
     {
-        return $user->can('view_department');
+        return $authUser->can('View:Department');
     }
 
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function create(User $user): bool
+    public function create(AuthUser $authUser): bool
     {
-        return $user->can('create_department');
+        return $authUser->can('Create:Department');
     }
 
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function update(User $user, Department $department): bool
+    public function update(AuthUser $authUser, Department $department): bool
     {
-        return $user->can('update_department');
+        return $authUser->can('Update:Department');
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function delete(User $user, Department $department): bool
+    public function delete(AuthUser $authUser, Department $department): bool
     {
-        return $user->can('delete_department');
+        return $authUser->can('Delete:Department');
     }
 
-    /**
-     * Determine whether the user can bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function deleteAny(User $user): bool
+    public function deleteAny(AuthUser $authUser): bool
     {
-        return $user->can('delete_any_department');
+        return $authUser->can('DeleteAny:Department');
     }
 
-    /**
-     * Determine whether the user can permanently delete.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Department $department): bool
+    public function restore(AuthUser $authUser, Department $department): bool
     {
-        return $user->can('force_delete_department');
+        return $authUser->can('Restore:Department');
     }
 
-    /**
-     * Determine whether the user can permanently bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDeleteAny(User $user): bool
+    public function forceDelete(AuthUser $authUser, Department $department): bool
     {
-        return $user->can('force_delete_any_department');
+        return $authUser->can('ForceDelete:Department');
     }
 
-    /**
-     * Determine whether the user can restore.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Department $department): bool
+    public function forceDeleteAny(AuthUser $authUser): bool
     {
-        return $user->can('restore_department');
+        return $authUser->can('ForceDeleteAny:Department');
     }
 
-    /**
-     * Determine whether the user can bulk restore.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restoreAny(User $user): bool
+    public function restoreAny(AuthUser $authUser): bool
     {
-        return $user->can('restore_any_department');
+        return $authUser->can('RestoreAny:Department');
     }
 
-    /**
-     * Determine whether the user can replicate.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function replicate(User $user, Department $department): bool
+    public function replicate(AuthUser $authUser, Department $department): bool
     {
-        return $user->can('replicate_department');
+        return $authUser->can('Replicate:Department');
     }
 
-    /**
-     * Determine whether the user can reorder.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function reorder(User $user): bool
+    public function reorder(AuthUser $authUser): bool
     {
-        return $user->can('reorder_department');
+        return $authUser->can('Reorder:Department');
     }
 
 }

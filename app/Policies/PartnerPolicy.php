@@ -1,151 +1,75 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
-use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use App\Models\Partner;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PartnerPolicy
 {
     use HandlesAuthorization;
-
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function viewAny(User $user): bool
+    
+    public function viewAny(AuthUser $authUser): bool
     {
-        return $user->can('view_any_partner');
+        return $authUser->can('ViewAny:Partner');
     }
 
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Partner  $partner
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, Partner $partner): bool
+    public function view(AuthUser $authUser, Partner $partner): bool
     {
-        return $user->can('view_partner');
+        return $authUser->can('View:Partner');
     }
 
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function create(User $user): bool
+    public function create(AuthUser $authUser): bool
     {
-        return $user->can('create_partner');
+        return $authUser->can('Create:Partner');
     }
 
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Partner  $partner
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function update(User $user, Partner $partner): bool
+    public function update(AuthUser $authUser, Partner $partner): bool
     {
-        return $user->can('update_partner');
+        return $authUser->can('Update:Partner');
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Partner  $partner
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function delete(User $user, Partner $partner): bool
+    public function delete(AuthUser $authUser, Partner $partner): bool
     {
-        return $user->can('delete_partner');
+        return $authUser->can('Delete:Partner');
     }
 
-    /**
-     * Determine whether the user can bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function deleteAny(User $user): bool
+    public function deleteAny(AuthUser $authUser): bool
     {
-        return $user->can('delete_any_partner');
+        return $authUser->can('DeleteAny:Partner');
     }
 
-    /**
-     * Determine whether the user can permanently delete.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Partner  $partner
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Partner $partner): bool
+    public function restore(AuthUser $authUser, Partner $partner): bool
     {
-        return $user->can('force_delete_partner');
+        return $authUser->can('Restore:Partner');
     }
 
-    /**
-     * Determine whether the user can permanently bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDeleteAny(User $user): bool
+    public function forceDelete(AuthUser $authUser, Partner $partner): bool
     {
-        return $user->can('force_delete_any_partner');
+        return $authUser->can('ForceDelete:Partner');
     }
 
-    /**
-     * Determine whether the user can restore.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Partner  $partner
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Partner $partner): bool
+    public function forceDeleteAny(AuthUser $authUser): bool
     {
-        return $user->can('restore_partner');
+        return $authUser->can('ForceDeleteAny:Partner');
     }
 
-    /**
-     * Determine whether the user can bulk restore.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restoreAny(User $user): bool
+    public function restoreAny(AuthUser $authUser): bool
     {
-        return $user->can('restore_any_partner');
+        return $authUser->can('RestoreAny:Partner');
     }
 
-    /**
-     * Determine whether the user can replicate.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Partner  $partner
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function replicate(User $user, Partner $partner): bool
+    public function replicate(AuthUser $authUser, Partner $partner): bool
     {
-        return $user->can('replicate_partner');
+        return $authUser->can('Replicate:Partner');
     }
 
-    /**
-     * Determine whether the user can reorder.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function reorder(User $user): bool
+    public function reorder(AuthUser $authUser): bool
     {
-        return $user->can('reorder_partner');
+        return $authUser->can('Reorder:Partner');
     }
 
 }

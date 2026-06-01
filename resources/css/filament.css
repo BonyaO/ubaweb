@@ -1,3 +1,1 @@
-@import '../../vendor/filament/filament/resources/css/app.css';
-
-
+/* Filament v5 manages its own CSS via the panel provider — no manual import needed */

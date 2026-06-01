@@ -10,10 +10,11 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
-use Filament\Resources\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
+use Filament\Actions;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
@@ -25,13 +26,13 @@ class SchoolResource extends Resource
 
     protected static ?string $navigationLabel = "Schools / Faculties";
 
-    protected static ?string $navigationGroup = 'School management';
+    protected static string|\UnitEnum|null $navigationGroup = 'School management';
 
-    protected static ?string $navigationIcon = 'heroicon-o-office-building';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-building-office';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 FileUpload::make('logo')->image(),
                 FileUpload::make('image')->image(),
@@ -57,10 +58,10 @@ class SchoolResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Actions\DeleteBulkAction::make(),
             ]);
     }
     

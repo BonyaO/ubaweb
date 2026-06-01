@@ -1,151 +1,75 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
-use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use App\Models\Programme;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProgrammePolicy
 {
     use HandlesAuthorization;
-
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function viewAny(User $user): bool
+    
+    public function viewAny(AuthUser $authUser): bool
     {
-        return $user->can('view_any_programme');
+        return $authUser->can('ViewAny:Programme');
     }
 
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Programme  $programme
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, Programme $programme): bool
+    public function view(AuthUser $authUser, Programme $programme): bool
     {
-        return $user->can('view_programme');
+        return $authUser->can('View:Programme');
     }
 
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function create(User $user): bool
+    public function create(AuthUser $authUser): bool
     {
-        return $user->can('create_programme');
+        return $authUser->can('Create:Programme');
     }
 
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Programme  $programme
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function update(User $user, Programme $programme): bool
+    public function update(AuthUser $authUser, Programme $programme): bool
     {
-        return $user->can('update_programme');
+        return $authUser->can('Update:Programme');
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Programme  $programme
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function delete(User $user, Programme $programme): bool
+    public function delete(AuthUser $authUser, Programme $programme): bool
     {
-        return $user->can('delete_programme');
+        return $authUser->can('Delete:Programme');
     }
 
-    /**
-     * Determine whether the user can bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function deleteAny(User $user): bool
+    public function deleteAny(AuthUser $authUser): bool
     {
-        return $user->can('delete_any_programme');
+        return $authUser->can('DeleteAny:Programme');
     }
 
-    /**
-     * Determine whether the user can permanently delete.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Programme  $programme
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Programme $programme): bool
+    public function restore(AuthUser $authUser, Programme $programme): bool
     {
-        return $user->can('force_delete_programme');
+        return $authUser->can('Restore:Programme');
     }
 
-    /**
-     * Determine whether the user can permanently bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDeleteAny(User $user): bool
+    public function forceDelete(AuthUser $authUser, Programme $programme): bool
     {
-        return $user->can('force_delete_any_programme');
+        return $authUser->can('ForceDelete:Programme');
     }
 
-    /**
-     * Determine whether the user can restore.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Programme  $programme
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Programme $programme): bool
+    public function forceDeleteAny(AuthUser $authUser): bool
     {
-        return $user->can('restore_programme');
+        return $authUser->can('ForceDeleteAny:Programme');
     }
 
-    /**
-     * Determine whether the user can bulk restore.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restoreAny(User $user): bool
+    public function restoreAny(AuthUser $authUser): bool
     {
-        return $user->can('restore_any_programme');
+        return $authUser->can('RestoreAny:Programme');
     }
 
-    /**
-     * Determine whether the user can replicate.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Programme  $programme
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function replicate(User $user, Programme $programme): bool
+    public function replicate(AuthUser $authUser, Programme $programme): bool
     {
-        return $user->can('replicate_programme');
+        return $authUser->can('Replicate:Programme');
     }
 
-    /**
-     * Determine whether the user can reorder.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function reorder(User $user): bool
+    public function reorder(AuthUser $authUser): bool
     {
-        return $user->can('reorder_programme');
+        return $authUser->can('Reorder:Programme');
     }
 
 }

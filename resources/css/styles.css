@@ -2,3 +2,21 @@
     width: 20px;
     height: 20px;
 }
+
+.btn-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    .btn-wrap {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .btn-wrap .btn {
+        width: 100%;
+    }
+}
