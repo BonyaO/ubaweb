@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::controller(PagesController::class)->group(function(){
+Route::controller(PagesController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('/about', 'about')->name('about');
     Route::get('/contact', 'contact')->name('contact');
+    Route::post('/contact', 'storeContactMessage')->name('contact.store');
 
     Route::get('/blog', 'blog')->name('blog');
     Route::get('/blog/{id}/{slug}', 'blogDetail')->name('blog.detail');
@@ -33,8 +33,6 @@ Route::controller(PagesController::class)->group(function(){
     Route::get('/departments/{school}/{id}/{slug}', 'departmentDetail')->name('department.detail');
     Route::get('/programmes/{school}/{department}/{programmeId}/{slug}', 'programmeDetail')->name('programme.detail');
 });
-
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -126,7 +126,7 @@
                         <!-- widget nstructor start -->
                         <div class="widget widget-search">
                             <h4 class="widget-title">Search</h4>
-                            <form>
+                            <form action="{{ route('blog') }}" method="GET">
                                 <input type="text" name="search" placeholder="Search...">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
@@ -137,7 +137,7 @@
                             <h4 class="widget-title">Categories</h4>
                             <ul class="list">
                                 @foreach($categories as $category)
-                                    <li><a href="#">{{$category->name}}</a></li>
+                                    <li><a href="{{ route('blog', ['category' => $category->id]) }}">{{$category->name}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -148,7 +148,7 @@
                             <div class="course-list">
                             @foreach($popularPosts as $popularPost)
                                 <div class="w-cs-single">
-                                    <img src="{{$post->image}}" alt="image">
+                                    <img src="{{$popularPost->imageUrl() ?? 'https://picsum.photos/100'}}" alt="image">
                                     <div class="fix">
                                          <p><a href="{{$popularPost->url()}}">{{$popularPost->title}}</a></p>
                                         <span><i class="fa fa-clock-o"></i> {{$popularPost->created_at->format('M d, Y')}}</span>

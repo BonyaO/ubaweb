@@ -10,7 +10,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["user_id", "title", "image", "slug", "summary", "detail", "is_published", "category_id"];
+    protected $fillable = ['user_id', 'title', 'image', 'slug', 'summary', 'detail', 'is_published', 'category_id'];
 
     public function user(): BelongsTo
     {
@@ -24,12 +24,17 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->morphToMany(Tag::class, "taggable");
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 
     public function url(): string
     {
         return "/blog/{$this->id}/{$this->slug}";
+    }
+
+    public function imageUrl(): ?string
+    {
+        return $this->image ? '/storage/'.$this->image : null;
     }
 
     public function tagString(): string

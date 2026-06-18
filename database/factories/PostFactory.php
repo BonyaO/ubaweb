@@ -3,11 +3,13 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
+ * @extends Factory<Post>
  */
 class PostFactory extends Factory
 {
@@ -19,13 +21,13 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            "user_id" => User::inRandomOrder()->first()->id,
-            "category_id" => Category::inRandomOrder()->first()->id,
-            "title" => fake()->sentence,
-            "slug" => fake()->slug,
-            "summary" => fake()->sentences(3, true),
-            "detail" => fake()->paragraphs(3, true),
-            "is_published" => fake()->randomElement([true, false])
+            'user_id' => User::inRandomOrder()->first()->id,
+            'category_id' => Category::inRandomOrder()->first()->id,
+            'title' => fake()->sentence,
+            'slug' => fake()->slug,
+            'summary' => Str::limit(fake()->sentences(3, true), 250),
+            'detail' => fake()->paragraphs(3, true),
+            'is_published' => fake()->randomElement([true, false]),
         ];
     }
 }

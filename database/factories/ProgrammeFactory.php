@@ -3,10 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\Department;
+use App\Models\Programme;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Programme>
+ * @extends Factory<Programme>
  */
 class ProgrammeFactory extends Factory
 {
@@ -18,14 +19,14 @@ class ProgrammeFactory extends Factory
     public function definition(): array
     {
         return [
-            "department_id" => Department::inRandomOrder()->first()->id,
-            "description" => fake()->sentence,
-            "name" => fake()->company,
-            "short_name" => fake()->word,
-            "duration" => fake()->randomNumber,
-            "prerequisite" => fake()->paragraph,
-            "fee" => fake()->randomNumber,
-            "show_fee" => array_rand([true, false])
+            'department_id' => Department::inRandomOrder()->first()->id,
+            'description' => fake()->sentence,
+            'name' => fake()->company,
+            'short_name' => fake()->word,
+            'duration' => fake()->numberBetween(1, 6),
+            'prerequisite' => fake()->paragraph,
+            'fee' => fake()->numberBetween(50000, 500000),
+            'show_fee' => fake()->boolean(),
         ];
     }
 }

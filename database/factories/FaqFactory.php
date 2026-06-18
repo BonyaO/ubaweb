@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Faq;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\faq>
+ * @extends Factory<Faq>
  */
 class FaqFactory extends Factory
 {
@@ -17,9 +18,9 @@ class FaqFactory extends Factory
     public function definition()
     {
         return [
-            "question" => fake()->words(5, true),
-            "response" => fake()->sentence,
-            "is_visible" => true
+            'question' => fake()->words(5, true),
+            'response' => fake()->sentence,
+            'is_visible' => true,
         ];
     }
 }

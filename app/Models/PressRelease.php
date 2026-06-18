@@ -12,11 +12,16 @@ class PressRelease extends Model
     protected $fillable = ['title', 'signed_on', 'file', 'image', 'description', 'is_published'];
 
     protected $casts = [
-        'signed_on' => 'datetime'
+        'signed_on' => 'datetime',
     ];
 
     public function downloadUrl(): string
     {
-        return "/storage/" . $this->file; 
+        return '/storage/'.$this->file;
+    }
+
+    public function imageUrl(): ?string
+    {
+        return $this->image ? '/storage/'.$this->image : null;
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContactMessageRequest;
 use App\Models\Category;
+use App\Models\ContactMessage;
 use App\Models\Department;
 use App\Models\Event;
 use App\Models\Partner;
@@ -18,11 +20,11 @@ class PagesController extends Controller
     public function home()
     {
         return view('frontend.home')->with([
-            "posts" => Post::take(6)->get(),
-            "events" => Event::take(4)->get(),
-            "members" => TeamMember::take(6)->get(),
-            "programmes" => Programme::take(6)->get(),
-            "partners" => Partner::take(10)->get()
+            'posts' => Post::take(6)->get(),
+            'events' => Event::take(4)->get(),
+            'members' => TeamMember::take(6)->get(),
+            'programmes' => Programme::take(10)->get(),
+            'partners' => Partner::take(10)->get(),
         ]);
     }
 
@@ -34,14 +36,29 @@ class PagesController extends Controller
     public function pressRelease()
     {
         return view('frontend.press-release')->with([
-            'pressReleases' => PressRelease::latest()->get()
+            'pressReleases' => PressRelease::latest()->get(),
         ]);
     }
 
-    public function blog()
+    public function blog(Request $request)
     {
+        $search = $request->query('search');
+        $categoryId = $request->query('category');
+
+        $posts = Post::query()
+            ->when($categoryId, fn ($query) => $query->where('category_id', $categoryId))
+            ->when($search, fn ($query) => $query->where(fn ($query) => $query
+                ->where('title', 'like', "%{$search}%")
+                ->orWhere('summary', 'like', "%{$search}%")))
+            ->latest()
+            ->paginate(9)
+            ->withQueryString();
+
         return view('frontend.blog.index')->with([
-            'posts' => Post::paginate(1)
+            'posts' => $posts,
+            'categories' => Category::all(),
+            'activeCategory' => $categoryId ? Category::find($categoryId) : null,
+            'search' => $search,
         ]);
     }
 
@@ -49,47 +66,60 @@ class PagesController extends Controller
     {
         $post = Post::find($id);
         $popularPosts = Post::inRandomOrder()->take(3)->get();
-        $categories = Category::inRandomOrder()->take(5)->get();
+        $categories = Category::all();
+
         return view('frontend.blog.blog-detail')->with([
-            "post" => $post,
-            "popularPosts" => $popularPosts,
-            "categories" => $categories
+            'post' => $post,
+            'popularPosts' => $popularPosts,
+            'categories' => $categories,
         ]);
     }
 
     public function events()
     {
         $events = Event::latest()->get();
+
         return view('frontend.events.index', compact('events'));
     }
 
     public function eventDetail($id, $slug)
     {
         $event = Event::findOrFail($id);
-        return view('frontend.events.show', compact("event"));
+
+        return view('frontend.events.show', compact('event'));
     }
 
     public function schoolDetail($id, string $slug)
     {
         $schools = School::latest()->get();
         $school = School::find($id);
-        return view('frontend.schools.show', compact("school", "schools"));
+
+        return view('frontend.schools.show', compact('school', 'schools'));
     }
 
     public function departmentDetail($school, $id, $slug)
     {
         $department = Department::findOrFail($id);
+
         return view('frontend.departments.show')->withDepartment($department);
     }
 
     public function programmeDetail($school, $department, $programmeId)
     {
         $programme = Programme::findOrFail($programmeId);
+
         return view('frontend.programmes.show')->withProgramme($programme);
     }
 
     public function contact()
     {
         return view('frontend.contact');
+    }
+
+    public function storeContactMessage(StoreContactMessageRequest $request)
+    {
+        ContactMessage::create($request->validated());
+
+        return back()->with('success', 'Thank you for reaching out. We will get back to you shortly.');
     }
 }
