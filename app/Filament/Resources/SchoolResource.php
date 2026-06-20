@@ -7,8 +7,8 @@ use App\Filament\Resources\SchoolResource\RelationManagers;
 use App\Models\School;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
@@ -19,6 +19,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class SchoolResource extends Resource
 {
@@ -38,8 +39,8 @@ class SchoolResource extends Resource
                 FileUpload::make('image')->image(),
                 TextInput::make('name')->required(),
                 TextInput::make('short_name')->required(),
-                Textarea::make('mission_statement')->required(),
-                Textarea::make('description')->required(),
+                RichEditor::make('mission_statement')->required()->columnSpanFull(),
+                RichEditor::make('description')->required()->columnSpanFull(),
                 TextInput::make('website')->url(),
                 Toggle::make('is_school')->label("School? (Otherwise Faculty)")
             ]);
@@ -52,7 +53,7 @@ class SchoolResource extends Resource
                 TextColumn::make('name')->searchable()->sortable(),
                 TextColumn::make('short_name')->searchable()->sortable(),
                 ToggleColumn::make('is_school'),
-                TextColumn::make('description'),
+                TextColumn::make('description')->formatStateUsing(fn (?string $state): string => Str::limit(strip_tags($state ?? ''), 50)),
             ])->defaultSort("created_at", "desc")
             ->filters([
                 //

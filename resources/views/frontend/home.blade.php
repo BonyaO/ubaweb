@@ -3,96 +3,138 @@
 @section('content')
     @include('frontend/includes/hero')
 
-    <div class="scholarship-call-area ptb--120">
+    
+    <div class="feature-blog ptb--120">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="section-title">
-                        <span class="text-uppercase">Scholarship opportunity</span>
-                        <h2>Call for TAGDev 2.0 Scholarship Applications</h2>
-                    </div>
-                    <p class="mb-4">
-                        Apply now for the 2026/2027 TAGDev 2.0 scholarship at the University of Bamenda. This opportunity supports academically competent students with financial need and encourages females, refugees, internally displaced persons, and applicants with disabilities to apply.
-                    </p>
-                    <div class="btn-wrap">
-                        <a href="{{ route('pressRelease') }}" class="btn btn-primary btn-round mr-3">Download call</a>
-                        <a href="https://ubastudent.online/admission" target="_blank" class="btn btn-light btn-round mr-3">Apply for admission</a>
-                        <a href="{{ route('contact') }}" class="btn btn-primary btn-round">Apply for scholarship</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center">
-                    <img src="{{ asset('frontend/images/img1.jpg') }}" alt="Scholarship call" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="feature-blog  ptb--120">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    <div class="section-title-style2 black-title title-tb text-center">
-                        <span>Top stories</span>
-                        <h2>{{__('Campus News')}}</h2>
-                    </div>
-                </div>
+            <div class="uba-section__head">
+                <span class="uba-eyebrow">Top stories</span>
+                <h2 class="uba-section__title">{{__('Campus News')}}</h2>
+                <span class="uba-rule"></span>
             </div>
 
-            <div class="row">
-                <div class="blog-carousel owl-carousel card-deck">
-                @foreach($posts as $post)
-                  <div class="card mb-5">
-                    <img class="card-img-top" src="{{$post->imageUrl() ?? 'https://picsum.photos/400'}}" alt="image">
-                    <div class="card-body p-25">
-                        <ul class="list-inline primary-color mb-3">
-                            <li><i class="fa fa-clock-o"></i>{{$post->created_at->format('M d, Y')}}</li>
-                        </ul>
-                      <h4 class="card-title mb-4"><a href="{{$post->url()}}">{{$post->title}}</a></h4>
-                      <p class="card-text">{{$post->summary}}</p>
-                      <a class="btn btn-primary btn-round btn-sm" href="{{$post->url()}}"> Read More </a>
+            @if($posts->isNotEmpty())
+            <div class="uba-news__grid">
+                <article class="uba-news__feature">
+                    <a href="{{$posts->first()->url()}}" class="uba-news__feature-media">
+                        <img src="{{$posts->first()->imageUrl() ?? 'https://picsum.photos/800/500'}}" alt="" loading="lazy">
+                    </a>
+                    <div class="uba-news__feature-body">
+                        <span class="uba-meta">{{$posts->first()->created_at->format('d M, Y')}}</span>
+                        <h3><a href="{{$posts->first()->url()}}">{{$posts->first()->title}}</a></h3>
+                        <p>{{$posts->first()->summary}}</p>
+                        <a class="uba-link" href="{{$posts->first()->url()}}">Read more &rarr;</a>
                     </div>
-                  </div><!-- card -->
-                @endforeach
+                </article>
 
-                </div><!-- blog-carousel -->
-            </div><!-- blog-carousel -->
-
+                <div class="uba-news__list">
+                    @foreach($posts->skip(1) as $post)
+                    <article class="uba-news__row">
+                        <span class="uba-meta">{{$post->created_at->format('d M, Y')}}</span>
+                        <h4><a href="{{$post->url()}}">{{$post->title}}</a></h4>
+                    </article>
+                    @endforeach
+                </div>
+            </div>
+            @endif
         </div>
     </div> <!-- blog area end -->
 
-    <div class="course-area  ptb--120">
+    @if($opportunities->isNotEmpty())
+    <div class="uba-opportunities ptb--120">
         <div class="container">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    <div class="section-title-style2 black-title title-tb text-center">
-                        <span>build your career</span>
-                        <h2 class="primary-color">Featured Programmes</h2>
-                    </div>
-                </div>
+            <div class="uba-section__head">
+                <span class="uba-eyebrow">Funding &amp; Scholarships</span>
+                <h2 class="uba-section__title">Grants, Projects &amp; Scholarships</h2>
+                <span class="uba-rule"></span>
             </div>
 
-            <div class="commn-carousel owl-carousel card-deck">
-            @foreach($programmes as $programme)
-                <div class="card mb-5">
-                    @if($programme->show_fee)
-                        <div class="course-thumb">
-                            <span class="cs-price primary-bg">{{$programme->fee}} XAF</span>
-                        </div>
+            <div class="uba-opportunities__layout">
+                @php $featured = $opportunities->first(); $remaining = $opportunities->skip(1); @endphp
+
+                <div class="uba-opportunities__feature @if($featured->isOpen()) uba-opportunities__feature--open @endif">
+                    <a href="{{$featured->detailUrl()}}" class="uba-opportunities__card-link" aria-label="{{$featured->title}}"></a>
+                    @if($featured->isOpen())
+                        <span class="uba-opportunities__badge">Open now</span>
                     @endif
-                    <div class="card-body mt-5 p-25">
-                        <div class="course-meta-title mb-3">
-                            <h4><a href="course-details.html">{{$programme->name}}</a></h4>
+                    @if($featured->imageUrl())
+                    <div class="uba-opportunities__feature-media">
+                        <img src="{{$featured->imageUrl()}}" alt="" loading="lazy">
+                    </div>
+                    @endif
+                    <div class="uba-opportunities__feature-body">
+                        <span class="uba-eyebrow uba-eyebrow--small">{{ucfirst($featured->type)}}</span>
+                        <h3>{{$featured->title}}</h3>
+                        <p>{{Str::limit($featured->summary, 200)}}</p>
+                        @if($featured->deadline)
+                            <span class="uba-meta">Apply by {{$featured->deadline->format('d M, Y')}}</span>
+                        @endif
+                        <div class="uba-opportunities__actions">
+                            <span class="uba-link">Learn more &rarr;</span>
+                            @if($featured->website)
+                            <a href="{{$featured->website}}" target="_blank" rel="noopener" class="btn btn-primary btn-round btn-sm">Apply now</a>
+                            @endif
                         </div>
-                        <p>{{$programme->description}}</p>
-                        <ul class="course-meta-details text-left w-100">
-                            <li>
-                             <p>Duration</p>
-                              <span>{{$programme->duration}} year(s)</span>
-                            </li>
-                        </ul>
-                  </div><!-- card-body -->
-                </div><!-- card -->
-                @endforeach
+                    </div>
+                </div>
+
+                @if($remaining->isNotEmpty())
+                <div class="uba-opportunities__grid">
+                    @foreach($remaining as $opportunity)
+                    <div class="uba-opportunities__card @if($opportunity->isOpen()) uba-opportunities__card--open @endif">
+                        <a href="{{$opportunity->detailUrl()}}" class="uba-opportunities__card-link" aria-label="{{$opportunity->title}}"></a>
+                        @if($opportunity->isOpen())
+                            <span class="uba-opportunities__badge">Open now</span>
+                        @endif
+                        @if($opportunity->imageUrl())
+                        <div class="uba-opportunities__card-media">
+                            <img src="{{$opportunity->imageUrl()}}" alt="" loading="lazy">
+                        </div>
+                        @endif
+                        <div class="uba-opportunities__card-body">
+                            <span class="uba-eyebrow uba-eyebrow--small">{{ucfirst($opportunity->type)}}</span>
+                            <h4>{{$opportunity->title}}</h4>
+                            <p>{{Str::limit($opportunity->summary, 110)}}</p>
+                            @if($opportunity->deadline)
+                                <span class="uba-meta">Apply by {{$opportunity->deadline->format('d M, Y')}}</span>
+                            @endif
+                            <div class="uba-opportunities__actions">
+                                <span class="uba-link">Learn more &rarr;</span>
+                                @if($opportunity->website)
+                                <a href="{{$opportunity->website}}" target="_blank" rel="noopener" class="btn btn-primary btn-round btn-sm">Apply</a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                @endif
+            </div>
+        </div>
+    </div>
+    @endif
+
+
+    <div class="course-area ptb--120">
+        <div class="container">
+            <div class="uba-section__head">
+                <span class="uba-eyebrow">Build your career</span>
+                <h2 class="uba-section__title">Featured Programmes</h2>
+                <span class="uba-rule"></span>
+            </div>
+
+            <div class="uba-catalog__grid">
+            @foreach($programmes as $programme)
+                <a href="{{$programme->programmeUrl()}}" class="uba-catalog__row">
+                    <span class="uba-eyebrow uba-eyebrow--small">{{$programme->department?->school?->short_name ?? $programme->department?->name}}</span>
+                    <h4>{{$programme->name}}</h4>
+                    <span class="uba-catalog__meta">
+                        {{$programme->duration}} yr{{$programme->duration > 1 ? 's' : ''}}
+                        @if($programme->show_fee)
+                            &middot; {{number_format($programme->fee)}} XAF
+                        @endif
+                    </span>
+                </a>
+            @endforeach
             </div>
         </div>
     </div>
@@ -120,29 +162,25 @@
     <!-- course area start -->
     <div class="teacher-area pb--100">
         <div class="container">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    <div class="section-title-style2 black-title title-tb text-center">
-                        <span>Central Administration</span>
-                        <h2 class="primary-color">The core team</h2>
-                    </div>
-                </div>
+            <div class="uba-section__head">
+                <span class="uba-eyebrow">Central Administration</span>
+                <h2 class="uba-section__title">The Core Team</h2>
+                <span class="uba-rule"></span>
             </div>
-            <div class="commn-carousel owl-carousel card-deck">
+            <div class="uba-roster__grid">
                 @foreach($members as $member)
-              <div class="card mb-5">
-                <img src="{{$member->imageUrl()}}" alt="image">
-                <div class="card-body teacher-content p-25">
-                  <h4 class="card-title mb-4"><a href="teacher-details.html">{{$member->name}}</a></h4>
-                  <span class="primary-color d-block mb-4">{{$member->position}}</span>
-                  <p class="card-text">{{$member->about}}</p>
+                <div class="uba-roster__card">
+                    <div class="uba-roster__photo">
+                        <img src="{{$member->imageUrl()}}" alt="{{$member->name}}" loading="lazy">
+                    </div>
+                    <h4>{{$member->name}}</h4>
+                    <span class="uba-roster__role">{{$member->position}}</span>
                 </div>
-              </div><!-- card -->
-              @endforeach
+                @endforeach
             </div>
         </div>
     </div>
-    <!-- course area end -->
+    <!-- core team area end -->
 
     <!-- events area start -->
     <div class="event-area  pt--120 pb--80">
@@ -164,7 +202,7 @@
                             <p>{{$event->start_date->format('Y')}}</p>
                         </div>
                         <div class="media-body">
-                            <h4><a href="#">{{$event->name}}</a></h4>
+                            <h4><a href="{{$event->eventUrl()}}">{{$event->name}}</a></h4>
                             <p>{{Str::words($event->description, 30)}}</p>
                         </div>
                     </div> <!-- media -->
@@ -173,70 +211,6 @@
             </div><!-- row -->
         </div><!-- container -->
     </div>
-
-    <div class="bg-light ptb--120"><!-- testimonial area start -->
-        <img class="tst-bg" src="frontend/images/bg/tst-bg-shape.png" alt="image">
-        <div class="container">
-            <div class="section-title-style2 black-title text-center">
-                <h2>Our partners & Affiliates</h2>
-            </div>
-            <div class="row">
-                @foreach($partners as $partner)
-                    <div class="col-lg-3 text-center">
-                        <div class="tst-carousel owl-carousel">
-                            <div class="testimonial-content pb--40 items-center text-center">
-                                <a href="{{$partner->address}}" target="_blank" class="section-title sec-style-two">
-                                    <img src="{{$partner->logoUrl()}}" alt="partner logo" style="width: 60px ; height: 60px; display: inline;">
-                                    <span class="text-uppercase primary-color mb-0">{{$partner->name}}</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div><!-- row -->
-                @endforeach
-            </div><!-- row -->
-        </div><!-- container -->
-    </div><!-- testimonial-area -->
-
-    <!-- events area end -->
-
-    <div class="d-none testimonial-area ptb--120"><!-- testimonial area start -->
-        <img class="tst-bg" src="frontend/images/bg/tst-bg-shape.png" alt="image">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3 text-center">
-                    <div class="tst-carousel owl-carousel">
-                        <div class="testimonial-content pb--40">
-                            <div class="section-title sec-style-two">
-                                <span class="text-uppercase primary-color mb-0">Happy students</span>
-                                <h2>Testimonial</h2>
-                            </div>
-                            <h3>‘‘ Vous devez profiter de la vie. Toujours aimez, les personnespositives penser. ‘‘</h3>
-                            <h4>Kawsar Ahhamed</h4>
-                            <span>App Developer</span>
-                        </div>
-                        <div class="testimonial-content pb--40">
-                            <div class="section-title sec-style-two">
-                                <span class="text-uppercase primary-color mb-0">Happy students</span>
-                                <h2>Testimonial</h2>
-                            </div>
-                            <h3>‘‘ Vous devez profiter de la vie. Toujours aimez, les personnespositives penser. ‘‘</h3>
-                            <h4>Kawsar Ahhamed</h4>
-                            <span>App Developer</span>
-                        </div>
-                        <div class="testimonial-content pb--40">
-                            <div class="section-title sec-style-two">
-                                <span class="text-uppercase primary-color mb-0">Happy students </span>
-                                <h2>Testimonial</h2>
-                            </div>
-                            <h3>‘‘ Vous devez profiter de la vie. Toujours aimez, les personnespositives penser. ‘‘</h3>
-                            <h4>Kawsar Ahhamed</h4>
-                            <span>App Developer</span>
-                        </div>
-                    </div>
-                </div><!-- row -->
-            </div><!-- row -->
-        </div><!-- container -->
-    </div><!-- testimonial-area -->
 
     <!-- cta area start -->
     <div class="cta-area secondary-bg has-color cta-area ptb--50 ">

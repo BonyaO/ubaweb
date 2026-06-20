@@ -13,7 +13,9 @@
                     <div class="media-body">
                         <span class="text-secondary small mb-1">Signed: {{$pressRelease->signed_on->format('d M, Y')}}</span>
                         <h4>{{$pressRelease->title}}</h4>
-                        <p>{{$pressRelease->description}}</p>
+                        <div class="mb-2">
+                            {!! $pressRelease->description !!}
+                        </div>
                         <a href="{{$pressRelease->downloadUrl()}}" class="btn btn-sm btn-link text-primary py-2 px-0" download>{{__("Download")}}</a>
                     </div>
                 </div> <!-- media -->

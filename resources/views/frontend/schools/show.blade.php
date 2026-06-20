@@ -13,7 +13,7 @@
                     @foreach($school->departments as $department)
                         <li>
                             <p class="mb-0 font-weight-bold" style="text-decoration: underline"><a href="{{$department->departmentUrl()}}">{{$department->name}}</a></p>
-                            <p class="small">{{$department->description}}</p>
+                            <p class="small">{{Str::limit(strip_tags($department->description), 100)}}</p>
                         </li>
                     @endforeach
                 </ul>
@@ -23,7 +23,9 @@
             <img src="{{$school->image ?? 'https://picsum.photos/1200/600'}}" 
                 alt="logo" class="img-fluid img-thumbnail mb-5">
                 <h3>{{$school->name}}</h3>
-                <p>{{$school->description}}</p>
+                <div class="mb-4">
+                    {!! $school->description !!}
+                </div>
 
                 <h4>Mission Statement</h4>
                 <div class="mb-4">

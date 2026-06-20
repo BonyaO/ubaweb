@@ -41,6 +41,8 @@
     <!-- footer area end -->
 
     @include('frontend/includes/footer-scripts')
+
+    @include('frontend/includes/site-alert')
 </body>
 
 </html>

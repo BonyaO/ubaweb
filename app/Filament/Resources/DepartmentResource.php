@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Actions;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class DepartmentResource extends Resource
 {
@@ -31,8 +32,9 @@ class DepartmentResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required(),
-                Forms\Components\Textarea::make('description')
-                    ->required(),
+                Forms\Components\RichEditor::make('description')
+                    ->required()
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('website')
                     ->maxLength(255),
             ]);
@@ -44,7 +46,7 @@ class DepartmentResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('school.name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('description')->formatStateUsing(fn (?string $state): string => Str::limit(strip_tags($state ?? ''), 50)),
                 Tables\Columns\TextColumn::make('website'),
             ])->defaultSort("created_at", "desc")
             ->filters([

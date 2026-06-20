@@ -9,3 +9,647 @@
     justify-content: space-between;
 }
 
+/* ==========================================================================
+   Brand tokens — derived from the university crest (navy / gold / forest /
+   parchment) rather than the template's default light-blue accent.
+   ========================================================================== */
+:root {
+    --uba-navy: #16284D;
+    --uba-navy-deep: #0F1C38;
+    --uba-gold: #C9A227;
+    --uba-forest: #1E4A33;
+    --uba-parchment: #F6F1E4;
+    --uba-ink: #23262B;
+    --uba-font-display: 'Fraunces', Georgia, serif;
+    --uba-font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+    --uba-font-mono: 'IBM Plex Mono', Menlo, monospace;
+}
+
+/* ---- Hero: one deliberate photo, not a slideshow ----------------------- */
+
+.uba-hero {
+    background: none;
+    overflow: hidden;
+}
+
+.uba-hero:before {
+    content: none;
+}
+
+.uba-hero__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    animation: uba-hero-zoom 36s ease-in-out infinite alternate;
+}
+
+.uba-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(15, 28, 56, .55) 0%, rgba(15, 28, 56, .8) 100%);
+}
+
+.uba-hero__content {
+    text-align: center;
+}
+
+.uba-hero__eyebrow {
+    display: inline-block;
+    font-family: var(--uba-font-mono);
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--uba-gold);
+    opacity: 0;
+    animation: uba-hero-rise .8s ease-out .1s forwards;
+}
+
+.uba-hero__title {
+    font-family: var(--uba-font-display);
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 1.1;
+    color: #fff;
+    margin: 18px 0 22px;
+    opacity: 0;
+    animation: uba-hero-rise .8s ease-out .25s forwards;
+}
+
+.uba-hero__motto {
+    font-family: var(--uba-font-mono);
+    font-size: 14px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .85);
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: uba-hero-rise .8s ease-out .4s forwards;
+}
+
+.uba-hero__actions {
+    opacity: 0;
+    animation: uba-hero-rise .8s ease-out .55s forwards;
+}
+
+.uba-hero__actions .btn {
+    background: var(--uba-gold);
+    border: 1px solid var(--uba-gold);
+    color: var(--uba-navy-deep);
+    font-family: var(--uba-font-mono);
+    letter-spacing: .05em;
+}
+
+.uba-hero__actions .btn:hover {
+    background: transparent;
+    border-color: #fff;
+    color: #fff;
+}
+
+@keyframes uba-hero-zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.12); }
+}
+
+@keyframes uba-hero-rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .uba-hero__media {
+        animation: none;
+    }
+
+    .uba-hero__eyebrow,
+    .uba-hero__title,
+    .uba-hero__motto,
+    .uba-hero__actions {
+        opacity: 1;
+        animation: none;
+        transform: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .uba-hero__title {
+        font-size: 36px;
+    }
+
+    .uba-hero__motto {
+        font-size: 11px;
+    }
+}
+
+/* ---- Sitewide type — applies the brand fonts to every page, not just the
+   homepage sections built around the .uba- classes below. ------------------ */
+
+body {
+    font-family: var(--uba-font-body);
+    color: var(--uba-ink);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--uba-font-display);
+    font-weight: 600;
+    color: var(--uba-navy);
+}
+
+.black-title span,
+.section-title > span {
+    font-family: var(--uba-font-mono);
+    letter-spacing: .1em;
+    color: var(--uba-forest);
+}
+
+/* ---- Shared section header + signature rule -------------------------- */
+
+.uba-section__head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 50px;
+}
+
+.uba-eyebrow {
+    display: inline-block;
+    font-family: var(--uba-font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--uba-forest);
+}
+
+.uba-section__title {
+    font-family: var(--uba-font-display);
+    font-weight: 600;
+    color: var(--uba-navy);
+    margin: 10px 0 18px;
+}
+
+.uba-rule {
+    display: block;
+    width: 96px;
+    height: 5px;
+    margin: 0 auto;
+    background: repeating-linear-gradient(135deg, var(--uba-gold) 0 5px, transparent 5px 10px);
+    opacity: .85;
+}
+
+.uba-meta {
+    font-family: var(--uba-font-mono);
+    font-size: 12px;
+    letter-spacing: .04em;
+    color: var(--uba-forest);
+    text-transform: uppercase;
+}
+
+.uba-link {
+    font-family: var(--uba-font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--uba-navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--uba-gold);
+    padding-bottom: 2px;
+}
+
+.uba-link:hover {
+    color: var(--uba-navy-deep);
+}
+
+/* ---- Opportunities: grants, projects & scholarships -------------------- */
+
+.uba-opportunities__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.uba-opportunities__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.uba-opportunities__feature,
+.uba-opportunities__card {
+    position: relative;
+    display: block;
+    background: #fff;
+    border: 1px solid #e7e2d6;
+    border-left: 3px solid var(--uba-navy);
+    color: inherit;
+    text-decoration: none;
+}
+
+.uba-opportunities__feature--open,
+.uba-opportunities__card--open {
+    background: var(--uba-parchment);
+    border-left-color: var(--uba-gold);
+}
+
+/* Full-bleed overlay link makes the whole card clickable; the Apply button
+   sits in its own stacking layer above it so it keeps its own click target. */
+.uba-opportunities__card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.uba-opportunities__feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.uba-opportunities__feature-media,
+.uba-opportunities__card-media {
+    overflow: hidden;
+}
+
+.uba-opportunities__feature-media img,
+.uba-opportunities__card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.uba-opportunities__card-media img {
+    height: 180px;
+}
+
+.uba-opportunities__feature-body,
+.uba-opportunities__card-body {
+    padding: 32px;
+}
+
+.uba-opportunities__card-body {
+    padding: 26px;
+}
+
+.uba-opportunities__badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 2;
+    font-family: var(--uba-font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--uba-navy-deep);
+    background: var(--uba-gold);
+    padding: 4px 10px;
+}
+
+.uba-opportunities__badge--static {
+    position: static;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.uba-opportunities__sidebar {
+    padding: 26px;
+    background: var(--uba-parchment);
+    border-left: 3px solid var(--uba-gold);
+    margin-bottom: 20px;
+}
+
+.uba-opportunities__feature-body h3 {
+    font-family: var(--uba-font-display);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--uba-ink);
+    margin: 10px 0 12px;
+}
+
+.uba-opportunities__card-body h4 {
+    font-family: var(--uba-font-display);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--uba-ink);
+    margin: 10px 0 10px;
+}
+
+.uba-opportunities__feature-body p,
+.uba-opportunities__card-body p {
+    font-family: var(--uba-font-body);
+    color: #555;
+    margin-bottom: 14px;
+}
+
+.uba-opportunities__feature-body .uba-meta,
+.uba-opportunities__card-body .uba-meta {
+    display: block;
+    margin-bottom: 14px;
+}
+
+.uba-opportunities__actions {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 991px) {
+    .uba-opportunities__feature {
+        grid-template-columns: 1fr;
+    }
+
+    .uba-opportunities__feature-media img {
+        height: 220px;
+    }
+
+    .uba-opportunities__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    .uba-opportunities__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---- Campus News: featured story + headline list ---------------------- */
+
+.uba-news__grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 48px;
+}
+
+.uba-news__feature-media {
+    display: block;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.uba-news__feature-media img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.uba-news__feature-body {
+    padding-top: 18px;
+}
+
+.uba-news__feature-body h3 {
+    font-family: var(--uba-font-display);
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 8px 0 12px;
+}
+
+.uba-news__feature-body h3 a,
+.uba-news__row h4 a {
+    color: var(--uba-ink);
+    text-decoration: none;
+}
+
+.uba-news__feature-body h3 a:hover,
+.uba-news__row h4 a:hover {
+    color: var(--uba-navy);
+}
+
+.uba-news__feature-body p {
+    font-family: var(--uba-font-body);
+    color: #555;
+    margin-bottom: 16px;
+}
+
+.uba-news__list {
+    display: flex;
+    flex-direction: column;
+}
+
+.uba-news__row {
+    padding: 18px 0;
+    border-top: 1px solid #e7e2d6;
+}
+
+.uba-news__row:first-child {
+    border-top: none;
+}
+
+.uba-news__row h4 {
+    font-family: var(--uba-font-display);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 6px 0 0;
+}
+
+/* ---- Featured Programmes: course-catalog ledger ----------------------- */
+
+.uba-catalog__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.uba-catalog__row {
+    display: block;
+    padding: 22px 20px;
+    border-top: 1px solid #e7e2d6;
+    border-left: 1px solid #e7e2d6;
+    text-decoration: none;
+    transition: background-color .15s ease;
+}
+
+.uba-catalog__row:hover {
+    background-color: var(--uba-parchment);
+}
+
+.uba-catalog__grid > .uba-catalog__row:nth-child(3n+1) {
+    border-left: none;
+}
+
+.uba-catalog__grid > .uba-catalog__row:nth-child(-n+3) {
+    border-top: none;
+}
+
+.uba-eyebrow--small {
+    font-size: 11px;
+}
+
+.uba-catalog__row h4 {
+    font-family: var(--uba-font-display);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--uba-ink);
+    margin: 8px 0 10px;
+}
+
+.uba-catalog__meta {
+    display: block;
+    font-family: var(--uba-font-mono);
+    font-size: 13px;
+    color: var(--uba-navy);
+}
+
+/* Template leftover: a 400px dark band was relied on to peek out around the
+   old opaque white carousel cards. Our roster cards have no card background,
+   so it now shows through as a black block — drop it. */
+.teacher-area:before {
+    content: none;
+}
+
+/* ---- Core Team: faculty roster ----------------------------------------- */
+
+.uba-roster__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 32px 24px;
+}
+
+.uba-roster__card {
+    text-align: center;
+}
+
+.uba-roster__photo {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.uba-roster__photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-top-color: var(--uba-gold);
+    border-right-color: var(--uba-gold);
+    pointer-events: none;
+}
+
+.uba-roster__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.uba-roster__card h4 {
+    font-family: var(--uba-font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--uba-ink);
+}
+
+.uba-roster__role {
+    display: block;
+    font-family: var(--uba-font-mono);
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--uba-forest);
+}
+
+@media (max-width: 991px) {
+    .uba-catalog__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .uba-catalog__grid > .uba-catalog__row:nth-child(3n+1) {
+        border-left: 1px solid #e7e2d6;
+    }
+
+    .uba-catalog__grid > .uba-catalog__row:nth-child(2n+1) {
+        border-left: none;
+    }
+
+    .uba-catalog__grid > .uba-catalog__row:nth-child(-n+2) {
+        border-top: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .uba-news__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .uba-catalog__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .uba-catalog__grid > .uba-catalog__row {
+        border-left: none !important;
+        border-top: 1px solid #e7e2d6 !important;
+    }
+
+    .uba-catalog__grid > .uba-catalog__row:first-child {
+        border-top: none !important;
+    }
+
+    .uba-roster__grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
+
+/* ---- Site alert: sitewide popup announcement --------------------------- */
+
+.uba-alert-modal .modal-content {
+    border: none;
+    border-radius: 0;
+    border-top: 4px solid var(--uba-gold);
+    overflow: hidden;
+}
+
+.uba-alert-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    z-index: 3;
+    width: 32px;
+    height: 32px;
+    line-height: 1;
+    background: rgba(255, 255, 255, .9);
+    border: none;
+    border-radius: 50%;
+    font-size: 22px;
+    color: var(--uba-navy-deep);
+    cursor: pointer;
+}
+
+.uba-alert-modal__media img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.uba-alert-modal__body {
+    padding: 36px 32px;
+    text-align: center;
+}
+
+.uba-alert-modal__body h3 {
+    font-family: var(--uba-font-display);
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--uba-navy);
+    margin-bottom: 14px;
+}
+
+.uba-alert-modal__description {
+    font-family: var(--uba-font-body);
+    color: var(--uba-ink);
+    margin-bottom: 22px;
+}
+
+.uba-alert-modal__description p:last-child {
+    margin-bottom: 0;
+}
+

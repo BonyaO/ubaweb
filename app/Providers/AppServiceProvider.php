@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\School;
+use App\Models\SiteAlert;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
     {
         if (Schema::hasTable('schools')) {
             view()->share('schools', School::all());
+        }
+
+        if (Schema::hasTable('site_alerts')) {
+            view()->share('activeAlert', SiteAlert::current());
         }
     }
 }

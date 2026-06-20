@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="widget widget-company">
-                            <a href="index.html" class="d-flex align-items-center">
+                            <a href="{{route('home')}}" class="d-flex align-items-center">
                             <img src="{{asset('frontend/images/ubalogo.png')}}" class="img-fluid" style="max-width: 100%; height: 100px" alt="image">
                             <div class="pl-3">
                                 <h4>The University of Bamenda</h4>

@@ -12,7 +12,9 @@
     </nav>
 
     <h3>{{$programme->name}}</h3>
-    <p>{{$programme->description}}</p>
+    <div class="mb-3">
+        {!! $programme->description !!}
+    </div>
     <p>Duration: {{$programme->duration}} years</p>
     @if($programme->show_fee)
     <p>Cost: {{$programme->fee}} XAF</p>

@@ -6,6 +6,7 @@ use App\Filament\Resources\PressReleaseResource\Pages;
 use App\Models\PressRelease;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
@@ -36,9 +37,9 @@ class PressReleaseResource extends Resource
                 FileUpload::make('file')
                     ->enableDownload()
                     ->required(),
-                Forms\Components\TextInput::make('description')
+                RichEditor::make('description')
                     ->required()
-                    ->maxLength(255),
+                    ->columnSpanFull(),
                 Toggle::make('is_publshed')->label("Publish")
             ]);
     }

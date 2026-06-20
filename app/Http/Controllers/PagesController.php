@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\ContactMessage;
 use App\Models\Department;
 use App\Models\Event;
+use App\Models\Opportunity;
 use App\Models\Partner;
 use App\Models\Post;
 use App\Models\PressRelease;
@@ -20,11 +21,16 @@ class PagesController extends Controller
     public function home()
     {
         return view('frontend.home')->with([
-            'posts' => Post::take(6)->get(),
+            'posts' => Post::where('is_published', true)->take(6)->get(),
             'events' => Event::take(4)->get(),
             'members' => TeamMember::take(6)->get(),
-            'programmes' => Programme::take(10)->get(),
+            'programmes' => Programme::with('department.school')->take(10)->get(),
             'partners' => Partner::take(10)->get(),
+            'opportunities' => Opportunity::where('is_published', true)
+                ->orderByRaw("status = 'open' desc")
+                ->latest()
+                ->take(6)
+                ->get(),
         ]);
     }
 
@@ -36,7 +42,7 @@ class PagesController extends Controller
     public function pressRelease()
     {
         return view('frontend.press-release')->with([
-            'pressReleases' => PressRelease::latest()->get(),
+            'pressReleases' => PressRelease::where('is_published', true)->latest()->get(),
         ]);
     }
 
@@ -46,6 +52,7 @@ class PagesController extends Controller
         $categoryId = $request->query('category');
 
         $posts = Post::query()
+            ->where('is_published', true)
             ->when($categoryId, fn ($query) => $query->where('category_id', $categoryId))
             ->when($search, fn ($query) => $query->where(fn ($query) => $query
                 ->where('title', 'like', "%{$search}%")
@@ -64,8 +71,8 @@ class PagesController extends Controller
 
     public function blogDetail($id, $slug)
     {
-        $post = Post::find($id);
-        $popularPosts = Post::inRandomOrder()->take(3)->get();
+        $post = Post::where('is_published', true)->find($id);
+        $popularPosts = Post::where('is_published', true)->inRandomOrder()->take(3)->get();
         $categories = Category::all();
 
         return view('frontend.blog.blog-detail')->with([
@@ -73,6 +80,13 @@ class PagesController extends Controller
             'popularPosts' => $popularPosts,
             'categories' => $categories,
         ]);
+    }
+
+    public function opportunityDetail($id, $slug)
+    {
+        $opportunity = Opportunity::where('is_published', true)->findOrFail($id);
+
+        return view('frontend.opportunities.show', compact('opportunity'));
     }
 
     public function events()

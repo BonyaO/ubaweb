@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             ProgrammeSeeder::class,
             PressReleaseSeeder::class,
+            OpportunitySeeder::class,
+            SiteAlertSeeder::class,
         ]);
     }
 }

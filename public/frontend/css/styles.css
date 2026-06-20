@@ -37,7 +37,7 @@ Description: UBa website theme
     ##== Default Css
 *=============================================*/
 :root {
-    --primary-color: #3ea7d5;
+    --primary-color: #16284D;
 }
 
 body {
@@ -122,15 +122,15 @@ a {
 }
 a:focus,
 a:hover {
-  color: #3ea7d5 !important;
+  color: #16284D !important;
 }
 *::-moz-selection {
-  background: #3ea7d5;
+  background: #16284D;
   color: #fff;
   text-shadow: none;
 }
 ::-moz-selection {
-  background: #3ea7d5;
+  background: #16284D;
   color: #fff;
   text-shadow: none;
 }
@@ -157,15 +157,15 @@ a:hover {
   padding: 12px 20px;
 }
 .btn-primary {
-  background: #3ea7d5 !important;
+  background: #16284D !important;
   color: #ffffff;
-  border: 1px solid #3ea7d5 !important;
+  border: 1px solid #16284D !important;
 }
 .btn-primary:focus,
 .btn-primary:hover {
   background-color: #ffffff !important;
-  color: #3ea7d5 !important;
-  border-color: #3ea7d5 !important;
+  color: #16284D !important;
+  border-color: #16284D !important;
 }
 .btn-light {
   background-color: #ffffff !important;
@@ -174,15 +174,15 @@ a:hover {
 }
 .btn-light:focus,
 .btn-light:hover {
-  background-color: #3ea7d5 !important;
+  background-color: #16284D !important;
   color: #ffffff !important;
-  border-color: #3ea7d5 !important;
+  border-color: #16284D !important;
 }
 .btn-round {
   border-radius: 50px;
 }
 .primary-bg {
-  background-color: #3ea7d5;
+  background-color: #16284D;
 }
 
 /*============================================
@@ -194,7 +194,7 @@ a:hover {
 }
 
 .header-top {
-  background-color: #3ea7d5;
+  background-color: #16284D;
   padding: 10px 0;
 }
 
@@ -289,7 +289,7 @@ a:hover {
 
 .main-menu nav ul li > a:hover,
 .main-menu nav ul li.active > a {
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 /*submenu*/
@@ -471,7 +471,7 @@ a:hover {
   height: 100vh;
   width: 100%;
   cursor: pointer;
-  background-color: #3ea7d5;
+  background-color: #16284D;
   visibility: hidden;
   opacity: 0;
   -webkit-transition: all 0.3s ease 0s;
@@ -515,7 +515,7 @@ a:hover {
   content: "";
   height: 2px;
   width: 50px;
-  background: #3ea7d5;
+  background: #16284D;
   position: absolute;
   left: 0;
   top: 12px;
@@ -531,11 +531,11 @@ a:hover {
   display: block;
 }
 .primary-color {
-  color: #3ea7d5 !important;
+  color: #16284D !important;
 }
 
 .text-color {
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 .slider-content p {
@@ -656,7 +656,7 @@ a.expand-video {
   margin: auto;
   height: 78px;
   width: 78px;
-  background: #3ea7d5;
+  background: #16284D;
   text-align: center;
   line-height: 78px;
   border-radius: 50%;
@@ -670,7 +670,7 @@ a.expand-video i {
 a.expand-video:focus,
 a.expand-video:hover {
   background-color: #fff;
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 /*============================================
@@ -696,14 +696,14 @@ a.expand-video:hover {
   top: 23px;
   color: #fff;
   padding: 6px 12px;
-  background: #3ea7d5;
+  background: #16284D;
 }
 .cs-price:before {
   content: "";
   position: absolute;
   right: 0;
   top: -9px;
-  border-left: 10px solid #3ea7d5;
+  border-left: 10px solid #16284D;
   border-top: 9px solid transparent;
 }
 .course-meta-title {
@@ -724,7 +724,7 @@ a.expand-video:hover {
   margin-bottom: 10px;
 }
 .course-meta-text h4 a:hover {
-  color: #3ea7d5;
+  color: #16284D;
 }
 ul.course-meta-stats {
 }
@@ -737,7 +737,7 @@ ul.course-meta-stats li:last-child {
   margin-right: 0;
 }
 ul.course-meta-stats li i {
-  color: #3ea7d5;
+  color: #16284D;
 }
 .course-meta-thumbnail {
   height: auto;
@@ -799,7 +799,7 @@ ul.course-meta-stats li i {
 .blog-carousel .owl-nav div:hover,
 .course-carousel .owl-nav div:hover,
 .teacher-carousel .owl-nav div:hover {
-  background: #3ea7d5;
+  background: #16284D;
 }
 
 /*============================================
@@ -811,7 +811,7 @@ ul.course-meta-stats li i {
 *=============================================*/
 
 .take-toure-area {
-  background: #14171d;
+  background: #0F1C38;
   position: relative;
   z-index: 1;
 }
@@ -887,7 +887,7 @@ img.title-top-shape {
   z-index: -1;
   height: 400px;
   width: 100%;
-  background: #14171d;
+  background: #0F1C38;
 }
 .teacher-content ul li a {
   font-size: 16px;
@@ -964,7 +964,7 @@ img.title-top-shape {
   margin-bottom: 0;
 }
 .media-body p i {
-  color: #3ea7d5;
+  color: #16284D;
   margin-right: 8px;
 }
 /*============================================
@@ -976,7 +976,7 @@ img.title-top-shape {
 *=============================================*/
 
 .testimonial-area {
-  background: #14171d;
+  background: #0F1C38;
   position: relative;
   z-index: 1;
 }
@@ -1066,7 +1066,7 @@ img.tst-bg {
 *=============================================*/
 
 .footer-top {
-  background: #14171d;
+  background: #0F1C38;
 }
 .widget-company > a {
   display: inline-block;
@@ -1083,7 +1083,7 @@ img.tst-bg {
 }
 .address h6 {
   font-weight: 400;
-  color: #3ea7d5;
+  color: #16284D;
   text-transform: capitalize;
   margin-bottom: 5px;
 }
@@ -1100,7 +1100,7 @@ img.tst-bg {
   margin-right: 10px;
 }
 .widget-company .social li a:hover {
-  color: #3ea7d5;
+  color: #16284D;
 }
 .fwidget-title {
   position: relative;
@@ -1165,7 +1165,7 @@ span.post-date i {
 .footer-link li i {
   font-size: 14px;
   margin-right: 12px;
-  color: #3ea7d5;
+  color: #16284D;
 }
 .footer-link li {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1209,7 +1209,7 @@ span.post-date i {
   top: calc(50% - 1px);
   height: 2px;
   width: 10px;
-  background: #3ea7d5;
+  background: #16284D;
   opacity: 0;
   transition: all 0.3s ease 0s;
 }
@@ -1252,7 +1252,7 @@ span.post-date i {
   border: 1px solid #ccc !important;
 }
 .header-bottom-right-style-2 li a.btn-light:hover {
-  border-color: #3ea7d5 !important;
+  border-color: #16284D !important;
 }
 
 .header-bottom-right-style-2 li a:hover,
@@ -1281,7 +1281,7 @@ span.post-date i {
   z-index: -1;
   height: 100%;
   width: 100%;
-  background: #1b2945;
+  background: #16284D;
   opacity: 0.5;
 }
 
@@ -1364,7 +1364,7 @@ span.post-date i {
 }
 
 .hero-content form strong a:hover {
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 /*about-area-style2*/
@@ -1425,7 +1425,7 @@ span.post-date i {
 }
 
 .black-title span {
-  color: #1e2c39;
+  color: #16284D;
 }
 
 .white-title span {
@@ -1472,7 +1472,7 @@ span.post-date i {
 
 .tst-carousel .owl-dots .active,
 .commn-carousel .owl-dots .active {
-  background: #3ea7d5;
+  background: #16284D;
 }
 
 /*============================================
@@ -1588,7 +1588,7 @@ span.post-date i {
 }
 
 .cnt-info ul.address li i {
-  color: #3ea7d5;
+  color: #16284D;
   margin-right: 15px;
 }
 .cnt-info ul.social li a {
@@ -1598,7 +1598,7 @@ span.post-date i {
 }
 
 .cnt-info ul.social li a:hover {
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 #google-map {
@@ -1630,7 +1630,7 @@ span.post-date i {
   height: 100%;
   width: 100%;
   opacity: 0.5;
-  background: #1b2945;
+  background: #16284D;
 }
 
 .crumb-content h4 {
@@ -1644,7 +1644,7 @@ span.post-date i {
 }
 
 .crumb-content h4 span {
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 .crumb-title {
@@ -1664,7 +1664,7 @@ span.post-date i {
   top: 25px;
   height: 2px;
   width: 50px;
-  background: #3ea7d5;
+  background: #16284D;
 }
 
 .view-more {
@@ -1813,7 +1813,7 @@ span.post-date i {
 }
 
 .cs-social li a:hover {
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 .cs-post-author {
@@ -1829,7 +1829,7 @@ span.post-date i {
 }
 
 .cs-post-author span {
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 .cs-comments {
@@ -1892,7 +1892,7 @@ span.post-date i {
 }
 
 .post-author-info .social li a:hover {
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 /*comment area*/
@@ -1999,7 +1999,7 @@ h4.comment-title {
 
 .leave-comment-area form input:focus,
 .leave-comment-area form textarea:focus {
-  border-color: #3ea7d5;
+  border-color: #16284D;
 }
 
 .leave-comment-area form textarea {
@@ -2089,7 +2089,7 @@ h4.comment-title {
   font-family: "Rubik", sans-serif;
   color: #fff;
   font-size: 12px;
-  background: #3ea7d5;
+  background: #16284D;
   padding: 5px 25px;
 }
 .w-cs-single {
@@ -2110,7 +2110,7 @@ h4.comment-title {
   font-weight: 700;
 }
 .w-cs-single p a:hover {
-  color: #3ea7d5;
+  color: #16284D;
 }
 .w-cs-single span {
   font-size: 12px;
@@ -2139,7 +2139,7 @@ h4.comment-title {
   border-radius: 33px;
   letter-spacing: 0;
   border: none;
-  background: #3ea7d5;
+  background: #16284D;
   color: #fff;
   outline: none;
   -webkit-transition: all 0.3s ease 0s;
@@ -2198,8 +2198,8 @@ h4.comment-title {
   right: -10px;
   bottom: -10px;
   border: none;
-  border-right: 5px solid #3ea7d5;
-  border-bottom: 5px solid #3ea7d5;
+  border-right: 5px solid #16284D;
+  border-bottom: 5px solid #16284D;
   height: 86%;
   width: 100%;
 }
@@ -2228,7 +2228,7 @@ h4.comment-title {
 }
 
 .befr-themeoclor.teacher-area:before {
-  background: #3ea7d5;
+  background: #16284D;
 }
 
 /*============================================
@@ -2252,7 +2252,7 @@ h4.comment-title {
   height: 50%;
   width: 100%;
   z-index: -1;
-  background: #3ea7d5;
+  background: #16284D;
 }
 
 .contact-info .cnt-info {
@@ -2288,7 +2288,7 @@ h4.comment-title {
 .cnt-addres-single .icon {
   float: left;
   margin-right: 15px;
-  color: #3ea7d5;
+  color: #16284D;
   font-size: 48px;
 }
 
@@ -2322,7 +2322,7 @@ h4.comment-title {
 
 .contact-form form input:focus,
 .contact-form form textarea:focus {
-  border-bottom: 1px solid #3ea7d5;
+  border-bottom: 1px solid #16284D;
 }
 
 .contact-form form textarea {
@@ -2334,7 +2334,7 @@ h4.comment-title {
   height: 48px;
   width: 193px;
   color: #fff;
-  background: #3ea7d5;
+  background: #16284D;
   letter-spacing: 0;
   font-weight: 700;
   text-transform: uppercase;
@@ -2375,17 +2375,17 @@ h4.comment-title {
 
 .blog-top-meta ul li span {
   letter-spacing: 0;
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 .blog-top-meta ul li i {
-  color: #3ea7d5;
+  color: #16284D;
   margin-right: 10px;
   font-size: 18px;
 }
 
 .blog-meta i {
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 /*widget-search*/
@@ -2403,7 +2403,7 @@ h4.comment-title {
 }
 
 .widget-search form button {
-  color: #3ea7d5;
+  color: #16284D;
   position: absolute;
   right: 0;
   top: 0;
@@ -2437,7 +2437,7 @@ h4.comment-title {
 }
 
 .widget-category .list li a:hover {
-  color: #3ea7d5;
+  color: #16284D;
 }
 
 .widget-category .list li a:before {
@@ -2472,7 +2472,7 @@ h4.comment-title {
   font-size: 48px;
   font-weight: 900;
   text-transform: uppercase;
-  color: #3ea7d5;
+  color: #16284D;
   letter-spacing: 0;
   margin-bottom: 25px;
 }

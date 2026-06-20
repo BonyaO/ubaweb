@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Actions;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ProgrammeResource extends Resource
 {
@@ -37,13 +38,15 @@ class ProgrammeResource extends Resource
                 Forms\Components\TextInput::make('short_name')
                     ->required()
                     ->maxLength(20),
-                Forms\Components\Textarea::make('description')
-                    ->required(),
+                Forms\Components\RichEditor::make('description')
+                    ->required()
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('duration')
                     ->numeric()
                     ->required(),
-                Forms\Components\Textarea::make('prerequisite')
-                    ->required(),
+                Forms\Components\RichEditor::make('prerequisite')
+                    ->required()
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('fee')
                     ->numeric()
                     ->required(),
@@ -59,7 +62,7 @@ class ProgrammeResource extends Resource
                 Tables\Columns\TextColumn::make('department.name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('short_name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('description')->limit(30),
+                Tables\Columns\TextColumn::make('description')->formatStateUsing(fn (?string $state): string => Str::limit(strip_tags($state ?? ''), 50)),
                 Tables\Columns\TextColumn::make('duration')->sortable(),
                 Tables\Columns\TextColumn::make('fee')->sortable(),
                 Tables\Columns\IconColumn::make('show_fee')
